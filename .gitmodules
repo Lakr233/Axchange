@@ -1,0 +1,6 @@
+[submodule "External/Colorful"]
+	path = External/Colorful
+	url = https://github.com/Lakr233/Colorful
+[submodule "External/AuxiliaryExecute"]
+	path = External/AuxiliaryExecute
+	url = https://github.com/Lakr233/AuxiliaryExecute
