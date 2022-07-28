@@ -14,11 +14,21 @@ extension Device {
         timeout: Double = -1,
         output: ((String) -> Void)? = nil
     ) -> AuxiliaryExecute.ExecuteRecipe {
-        Executor.executeADB(
+        let recipe = Executor.executeADB(
             withParameters: ["-s", adbIdentifier] + parameters,
             timeout: timeout,
             output: output
         )
+        DispatchQueue.main.async {
+            self.deviceLog.append(.init(
+                command: "adb \(parameters.joined(separator: " "))",
+                recipt: recipe
+            ))
+            while self.deviceLog.count > 256 {
+                self.deviceLog.removeLast()
+            }
+        }
+        return recipe
     }
 
     func executeADB(command: String) -> String {

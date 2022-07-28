@@ -5,6 +5,7 @@
 //  Created by Lakr Aream on 2022/7/26.
 //
 
+import AuxiliaryExecute
 import Foundation
 
 class Device: ObservableObject, Equatable, Identifiable {
@@ -21,6 +22,14 @@ class Device: ObservableObject, Equatable, Identifiable {
 
     @Published var deviceName: String?
     @Published var deviceStatus: Status
+
+    @Published var deviceLog: [DeviceExecLog] = []
+
+    struct DeviceExecLog: Identifiable {
+        var id: UUID = .init()
+        let command: String
+        let recipt: AuxiliaryExecute.ExecuteRecipe
+    }
 
     let adbQueue: DispatchQueue!
 

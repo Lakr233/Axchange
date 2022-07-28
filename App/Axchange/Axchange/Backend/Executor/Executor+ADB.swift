@@ -20,8 +20,7 @@ extension Executor {
         timeout: Double = -1,
         output: ((String) -> Void)? = nil
     ) -> AuxiliaryExecute.ExecuteRecipe {
-        debugPrint("[!] (adb) \(parameters.joined(separator: " "))")
-        return AuxiliaryExecute.spawn(
+        AuxiliaryExecute.spawn(
             command: adbBinaryLocation.path,
             args: parameters,
             environment: [:],
