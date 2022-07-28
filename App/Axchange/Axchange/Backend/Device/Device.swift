@@ -25,10 +25,18 @@ class Device: ObservableObject, Equatable, Identifiable {
 
     @Published var deviceLog: [DeviceExecLog] = []
 
-    struct DeviceExecLog: Identifiable {
+    struct DeviceExecLog: Identifiable, Hashable, Equatable {
         var id: UUID = .init()
         let command: String
         let recipt: AuxiliaryExecute.ExecuteRecipe
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+
+        static func == (lhs: DeviceExecLog, rhs: DeviceExecLog) -> Bool {
+            lhs.id == rhs.id
+        }
     }
 
     let adbQueue: DispatchQueue!

@@ -12,11 +12,13 @@ extension Device {
     func executeADB(
         withParameters parameters: [String],
         timeout: Double = -1,
+        setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
     ) -> AuxiliaryExecute.ExecuteRecipe {
         let recipe = Executor.executeADB(
             withParameters: ["-s", adbIdentifier] + parameters,
             timeout: timeout,
+            setPid: setPid,
             output: output
         )
         DispatchQueue.main.async {
@@ -25,16 +27,17 @@ extension Device {
                 recipt: recipe
             ))
             while self.deviceLog.count > 256 {
-                self.deviceLog.removeLast()
+                self.deviceLog.removeFirst()
             }
         }
         return recipe
     }
 
-    func executeADB(command: String) -> String {
+    func executeADB(command: String, setPid: ((pid_t) -> Void)? = nil) -> String {
         let parms = command.components(separatedBy: " ").filter { !$0.isEmpty }
         let recipe: AuxiliaryExecute.ExecuteRecipe = executeADB(
-            withParameters: parms
+            withParameters: parms,
+            setPid: setPid
         )
         return recipe.stdout
     }

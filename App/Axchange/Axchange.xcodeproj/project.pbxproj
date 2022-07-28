@@ -24,6 +24,7 @@
 		50471208289030A3005BD174 /* Executor+ADB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50471207289030A3005BD174 /* Executor+ADB.swift */; };
 		5047120A28903110005BD174 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047120928903110005BD174 /* DispatchQueue.swift */; };
 		5047120F2890322A005BD174 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047120E2890322A005BD174 /* Device.swift */; };
+		50B8FD7C28927A0800B3BC33 /* DeviceFileView+LogElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */; };
 		50EB3BA42890FCF100CB1BDA /* Device+Exec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */; };
 		50EB3BA62890FEDF00CB1BDA /* Device+Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA52890FEDF00CB1BDA /* Device+Prop.swift */; };
 		50EB3BA828911AC900CB1BDA /* DeviceFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA728911AC900CB1BDA /* DeviceFileView.swift */; };
@@ -49,6 +50,7 @@
 		50471207289030A3005BD174 /* Executor+ADB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Executor+ADB.swift"; sourceTree = "<group>"; };
 		5047120928903110005BD174 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		5047120E2890322A005BD174 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceFileView+LogElement.swift"; sourceTree = "<group>"; };
 		50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Exec.swift"; sourceTree = "<group>"; };
 		50EB3BA52890FEDF00CB1BDA /* Device+Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Prop.swift"; sourceTree = "<group>"; };
 		50EB3BA728911AC900CB1BDA /* DeviceFileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFileView.swift; sourceTree = "<group>"; };
@@ -73,8 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				50EB3BA728911AC900CB1BDA /* DeviceFileView.swift */,
-				50059A6B2891C010003D0CD4 /* DeviceFileView+Helper.swift */,
 				50059A682891BFE2003D0CD4 /* DeviceFileView+Exec.swift */,
+				50059A6B2891C010003D0CD4 /* DeviceFileView+Helper.swift */,
+				50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */,
 			);
 			path = DeviceFileView;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				5047120F2890322A005BD174 /* Device.swift in Sources */,
 				5047120A28903110005BD174 /* DispatchQueue.swift in Sources */,
 				504711FE2890287F005BD174 /* SidebarView.swift in Sources */,
+				50B8FD7C28927A0800B3BC33 /* DeviceFileView+LogElement.swift in Sources */,
 				50EB3BAC28912EC400CB1BDA /* Device+File.swift in Sources */,
 				50059A692891BFE2003D0CD4 /* DeviceFileView+Exec.swift in Sources */,
 				504711E1289023AE005BD174 /* MainView.swift in Sources */,
@@ -426,7 +430,7 @@
 				CODE_SIGN_ENTITLEMENTS = Axchange/Axchange.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -454,7 +458,7 @@
 				CODE_SIGN_ENTITLEMENTS = Axchange/Axchange.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
