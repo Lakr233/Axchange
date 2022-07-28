@@ -35,6 +35,8 @@ struct DeviceFileView: View {
     @State var isLoading: Bool = true
     @State var operationProgress: Progress? = nil
     @State var operationProgressHint: String? = nil
+    @State var operationProcessPid: pid_t? = nil
+
     @State var dataSource: [Device.RemoteFile] = []
     @State var searchKey: String = ""
     @State var selection: Set<Device.RemoteFile.ID> = []
@@ -75,6 +77,15 @@ struct DeviceFileView: View {
                     Text("\(operationProgress?.completedUnitCount ?? 0)/\(operationProgress?.totalUnitCount ?? 1)")
                 }
                 .font(.system(.footnote, design: .monospaced))
+                if let operationProcessPid = operationProcessPid {
+                    Button {
+                        kill(operationProcessPid, 9)
+                    } label: {
+                        Text("Cancel")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                }
             }
             .frame(maxWidth: 300)
             .padding()
@@ -189,6 +200,19 @@ struct DeviceFileView: View {
             .overlay(controlBanner.frame(maxHeight: .infinity, alignment: .bottom))
     }
 
+    var deviceLogView: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 2) {
+                ForEach(device.deviceLog) { record in
+                    LogElement(record: record)
+                    Divider().tag(record.id)
+                }
+            }
+            .padding()
+        }
+        .frame(width: 600, height: 250)
+    }
+
     var controlBanner: some View {
         HStack(spacing: 6) {
             Button {
@@ -197,58 +221,26 @@ struct DeviceFileView: View {
                 if isLoading {
                     ProgressView().scaleEffect(0.4)
                 } else {
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                    if device.deviceLog.last?.recipt.exitCode ?? 0 == 0 {
+                        Image(systemName: "checkmark.circle")
+                            .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                    } else {
+                        Image(systemName: "checkmark.circle.trianglebadge.exclamationmark")
+                            .font(.system(size: 12, weight: .semibold, design: .monospaced))
+                            .foregroundColor(.red)
+                    }
                 }
             }
             .buttonStyle(.plain)
             .frame(width: bannerHeight)
             .popover(isPresented: $showLogs) {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 2) {
-                        ForEach(device.deviceLog) { record in
-                            VStack(alignment: .leading, spacing: 0) {
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    Button {
-                                        NSPasteboard.general.prepareForNewContents()
-                                        NSPasteboard.general.setString(record.command, forType: .string)
-                                    } label: {
-                                        Text(record.command)
-                                            .foregroundColor(.accentColor)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                                if !record.recipt.stdout.isEmpty {
-                                    Button {
-                                        NSPasteboard.general.prepareForNewContents()
-                                        NSPasteboard.general.setString(record.recipt.stdout, forType: .string)
-                                    } label: {
-                                        Text(record.recipt.stdout.trimmingCharacters(in: .whitespacesAndNewlines))
-                                            .frame(maxWidth: .infinity, maxHeight: 100, alignment: .leading)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                                if !record.recipt.stderr.isEmpty {
-                                    Button {
-                                        NSPasteboard.general.prepareForNewContents()
-                                        NSPasteboard.general.setString(record.recipt.stderr, forType: .string)
-                                    } label: {
-                                        Text(record.recipt.stderr.trimmingCharacters(in: .whitespacesAndNewlines))
-                                            .foregroundColor(.red)
-                                            .frame(maxWidth: .infinity, maxHeight: 100, alignment: .leading)
-                                    }
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.system(.footnote, design: .monospaced))
-                            Divider()
+                ScrollViewReader { value in
+                    deviceLogView.onAppear {
+                        if let last = device.deviceLog.last {
+                            value.scrollTo(last.id)
                         }
                     }
-                    .padding()
                 }
-                .frame(width: 600, height: 250)
             }
             Divider()
             Button {
@@ -265,6 +257,7 @@ struct DeviceFileView: View {
                     editingPath = false
                     sourcePath = URL(fileURLWithPath: newValue)
                 }
+                .disableAutocorrection(true)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 4) {
@@ -334,6 +327,13 @@ struct DeviceFileView: View {
                 }
                 .foregroundColor(.accentColor)
                 .frame(maxWidth: .infinity)
+                .onHover { hover in
+                    if hover {
+                        NSCursor.pointingHand.push()
+                    } else {
+                        NSCursor.pop()
+                    }
+                }
             }
             .width(19)
             TableColumn("Name", value: \.name) { element in

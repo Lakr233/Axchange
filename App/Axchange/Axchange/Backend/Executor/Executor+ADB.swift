@@ -18,6 +18,7 @@ extension Executor {
     static func executeADB(
         withParameters parameters: [String],
         timeout: Double = -1,
+        setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
     ) -> AuxiliaryExecute.ExecuteRecipe {
         AuxiliaryExecute.spawn(
@@ -25,7 +26,7 @@ extension Executor {
             args: parameters,
             environment: [:],
             timeout: timeout,
-            setPid: nil,
+            setPid: setPid,
             output: output
         )
     }
@@ -34,11 +35,13 @@ extension Executor {
         forDeviceWithName deviceName: String,
         withParameters parameters: [String],
         timeout: Double = -1,
+        setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
     ) -> AuxiliaryExecute.ExecuteRecipe {
         executeADB(
             withParameters: ["-s", deviceName] + parameters,
             timeout: timeout,
+            setPid: setPid,
             output: output
         )
     }

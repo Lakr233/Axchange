@@ -145,24 +145,34 @@ extension Device {
         group.wait()
     }
 
-    func pushFiles(atPaths: [URL], toDir: URL, progress: @escaping (URL, Progress) -> Void) {
+    func pushFiles(
+        atPaths: [URL],
+        toDir: URL,
+        setPid: ((pid_t) -> Void)? = nil,
+        progress: @escaping (URL, Progress) -> Void
+    ) {
         guard !toDir.path.contains("\"") else { return }
         for (idx, path) in atPaths.enumerated() {
             guard !path.path.contains("\"") else { continue }
             let value = Progress(totalUnitCount: Int64(atPaths.count))
             value.completedUnitCount = Int64(idx + 1)
             progress(path, value)
-            _ = executeADB(withParameters: ["push", path.path, "\(toDir.path)/"])
+            _ = executeADB(withParameters: ["push", path.path, "\(toDir.path)/"], setPid: setPid)
         }
     }
 
-    func downloadFiles(atPaths: [URL], toDest: URL, progress: @escaping (URL, Progress) -> Void) {
+    func downloadFiles(
+        atPaths: [URL],
+        toDest: URL,
+        setPid: ((pid_t) -> Void)? = nil,
+        progress: @escaping (URL, Progress) -> Void
+    ) {
         for (idx, path) in atPaths.enumerated() {
             guard !path.path.contains("\"") else { continue }
             let value = Progress(totalUnitCount: Int64(atPaths.count))
             value.completedUnitCount = Int64(idx + 1)
             progress(path, value)
-            _ = executeADB(withParameters: ["pull", path.path, "\(toDest.path)/"])
+            _ = executeADB(withParameters: ["pull", path.path, "\(toDest.path)/"], setPid: setPid)
         }
     }
 }

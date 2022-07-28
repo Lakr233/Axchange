@@ -75,7 +75,11 @@ extension DeviceFileView {
                 operationProgress = Progress()
                 operationProgressHint = "Preparing Upload"
             }
-            device.pushFiles(atPaths: atUrl, toDir: sourcePath) { url, progress in
+            device.pushFiles(atPaths: atUrl, toDir: sourcePath, setPid: { pid in
+                DispatchQueue.withMainAndWait {
+                    self.operationProcessPid = pid
+                }
+            }) { url, progress in
                 DispatchQueue.main.async {
                     operationProgress = progress
                     operationProgressHint = "Sending \(url.path)"
@@ -84,6 +88,7 @@ extension DeviceFileView {
             DispatchQueue.withMainAndWait {
                 operationProgress = nil
                 operationProgressHint = nil
+                operationProcessPid = nil
                 updateDataSource()
             }
         }
@@ -98,7 +103,11 @@ extension DeviceFileView {
                 operationProgress = Progress()
                 operationProgressHint = "Preparing Download"
             }
-            device.downloadFiles(atPaths: paths, toDest: toUrl) { url, progress in
+            device.downloadFiles(atPaths: paths, toDest: toUrl, setPid: { pid in
+                DispatchQueue.withMainAndWait {
+                    self.operationProcessPid = pid
+                }
+            }) { url, progress in
                 DispatchQueue.withMainAndWait {
                     operationProgress = progress
                     operationProgressHint = "Downloading \(url.path)"
@@ -107,6 +116,7 @@ extension DeviceFileView {
             DispatchQueue.withMainAndWait {
                 operationProgress = nil
                 operationProgressHint = nil
+                operationProcessPid = nil
             }
         }
     }
