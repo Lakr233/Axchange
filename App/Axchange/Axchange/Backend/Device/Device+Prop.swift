@@ -65,9 +65,10 @@ extension Device {
     }
 
     private func populateDeviceName(fromMeta meta: [String: String]) {
-        guard let name = meta["persist.sys.device_name"] else {
-            return
-        }
+        let name = meta["ro.product.manufacturer"]
+            ?? meta["ro.product.model"]
+            ?? meta["persist.sys.device_name"]
+        guard let name = name else { return }
         DispatchQueue.withMainAndWait {
             guard self.deviceName != name else {
                 return
