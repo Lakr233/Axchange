@@ -1,5 +1,5 @@
 //
-//  DeviceView.swift
+//  DeviceFileView.swift
 //  Axchange
 //
 //  Created by Lakr Aream on 2022/7/27.
@@ -77,7 +77,7 @@ struct DeviceFileView: View {
                     Text("\(operationProgress?.completedUnitCount ?? 0)/\(operationProgress?.totalUnitCount ?? 1)")
                 }
                 .font(.system(.footnote, design: .monospaced))
-                if let operationProcessPid = operationProcessPid {
+                if let operationProcessPid {
                     Button {
                         kill(operationProcessPid, 9)
                     } label: {
