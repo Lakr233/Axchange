@@ -28,6 +28,12 @@
     },
     "Are you sure you want to delete %d files?" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete %d files?"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -217,6 +223,12 @@
     },
     "Downloading %@" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading %@"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -525,6 +537,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在上传 %@"
+          }
+        }
+      }
+    },
+    "Version: %@ Build: %@ ADB: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Version: %1$@ Build: %2$@ ADB: %3$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本 %1$@ 构建 %2$@ 核心 %3$@"
           }
         }
       }

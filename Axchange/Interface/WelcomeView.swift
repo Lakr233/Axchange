@@ -10,12 +10,12 @@ import SwiftUI
 
 struct WelcomeView: View {
     var version: String {
-        var ret = "Version: " +
-            (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown")
-            + " Build: " +
-            (Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "Unknown")
-            + " "
-            + Executor.version
+        var ret = String(
+            format: NSLocalizedString("Version: %@ Build: %@ ADB: %@", comment: ""),
+            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0",
+            Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0",
+            Executor.version
+        )
         #if DEBUG
             ret = "👾 \(ret) 👾"
         #endif
