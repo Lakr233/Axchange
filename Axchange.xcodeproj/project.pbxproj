@@ -24,7 +24,6 @@
 		504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F9B2CD0C30500734B56 /* ColorfulX */; };
 		504D5F9E2CD0C52C00734B56 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 504D5F9D2CD0C52C00734B56 /* Localizable.xcstrings */; };
 		504D5FA02CD0C53100734B56 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 504D5F9F2CD0C53100734B56 /* InfoPlist.xcstrings */; };
-		504D5FA52CD0C71000734B56 /* SignADB.sh in Resources */ = {isa = PBXBuildFile; fileRef = 504D5FA42CD0C71000734B56 /* SignADB.sh */; };
 		504D5FA92CD0C8B600734B56 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D5FA82CD0C8B600734B56 /* main.swift */; };
 		504D5FAB2CD0C97800734B56 /* EmbedADB.sh in Resources */ = {isa = PBXBuildFile; fileRef = 504D5FAA2CD0C97800734B56 /* EmbedADB.sh */; };
 		50B8FD7C28927A0800B3BC33 /* DeviceFileView+LogElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */; };
@@ -53,7 +52,6 @@
 		504D5F9D2CD0C52C00734B56 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		504D5F9F2CD0C53100734B56 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		504D5FA12CD0C6FF00734B56 /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
-		504D5FA42CD0C71000734B56 /* SignADB.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SignADB.sh; sourceTree = "<group>"; };
 		504D5FA72CD0C76200734B56 /* Entitlements-Subprocess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Entitlements-Subprocess.entitlements"; sourceTree = "<group>"; };
 		504D5FA82CD0C8B600734B56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		504D5FAA2CD0C97800734B56 /* EmbedADB.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EmbedADB.sh; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				504711E2289023AE005BD174 /* Assets.xcassets */,
 				504D5F9D2CD0C52C00734B56 /* Localizable.xcstrings */,
 				504D5F9F2CD0C53100734B56 /* InfoPlist.xcstrings */,
-				504D5FA42CD0C71000734B56 /* SignADB.sh */,
 				504D5FAA2CD0C97800734B56 /* EmbedADB.sh */,
 			);
 			path = Resources;
@@ -266,7 +263,6 @@
 				504711E3289023AE005BD174 /* Assets.xcassets in Resources */,
 				504D5FAB2CD0C97800734B56 /* EmbedADB.sh in Resources */,
 				504D5FA02CD0C53100734B56 /* InfoPlist.xcstrings in Resources */,
-				504D5FA52CD0C71000734B56 /* SignADB.sh in Resources */,
 				504D5F9E2CD0C52C00734B56 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
