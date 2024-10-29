@@ -26,6 +26,16 @@
     "🏳️‍🌈" : {
       "shouldTranslate" : false
     },
+    "Are you sure you want to delete %d files?" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你确定要删除 %d 个文件吗？"
+          }
+        }
+      }
+    },
     "Axchange" : {
       "shouldTranslate" : false
     },
@@ -61,6 +71,22 @@
         }
       }
     },
+    "Confirm" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确定"
+          }
+        }
+      }
+    },
     "Copied" : {
       "localizations" : {
         "en" : {
@@ -77,6 +103,22 @@
         }
       }
     },
+    "Create" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "创建"
+          }
+        }
+      }
+    },
     "Create Date" : {
       "localizations" : {
         "en" : {
@@ -89,6 +131,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "创建日期"
+          }
+        }
+      }
+    },
+    "Create New Folder in %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create New Folder in %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在 %@ 中创建文件夹"
           }
         }
       }
@@ -153,6 +211,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下载"
+          }
+        }
+      }
+    },
+    "Downloading %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在下载 %@"
           }
         }
       }
@@ -285,6 +353,38 @@
         }
       }
     },
+    "Preparing Download" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing Download"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "准备下载"
+          }
+        }
+      }
+    },
+    "Preparing Upload" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparing Upload"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "准备上传"
+          }
+        }
+      }
+    },
     "Refresh" : {
       "localizations" : {
         "en" : {
@@ -349,6 +449,22 @@
         }
       }
     },
+    "Select files to upload to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select files to upload to %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择上传到 %@ 的文件"
+          }
+        }
+      }
+    },
     "Size" : {
       "localizations" : {
         "en" : {
@@ -393,6 +509,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "上传"
+          }
+        }
+      }
+    },
+    "Uploading %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploading %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在上传 %@"
           }
         }
       }

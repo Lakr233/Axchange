@@ -39,12 +39,15 @@ extension DeviceFileView {
 
     func createFolder() {
         let msg = NSAlert()
-        msg.addButton(withTitle: "Confirm")
-        msg.addButton(withTitle: "Cancel")
-        msg.messageText = "Create New Foler"
+        msg.addButton(withTitle: NSLocalizedString("Create", comment: ""))
+        msg.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
+        msg.messageText = String(
+            format: NSLocalizedString("Create New Folder in %@", comment: ""),
+            sourcePath.lastPathComponent
+        )
 
         let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-        txt.stringValue = "New Foler"
+        txt.stringValue = NSLocalizedString("New Folder", comment: "")
         msg.window.initialFirstResponder = txt
         msg.accessoryView = txt
 
@@ -73,7 +76,7 @@ extension DeviceFileView {
         DispatchQueue.global().async {
             DispatchQueue.withMainAndWait {
                 operationProgress = Progress()
-                operationProgressHint = "Preparing Upload"
+                operationProgressHint = NSLocalizedString("Preparing Upload", comment: "")
             }
             device.pushFiles(atPaths: atUrl, toDir: sourcePath, setPid: { pid in
                 DispatchQueue.withMainAndWait {
@@ -82,7 +85,10 @@ extension DeviceFileView {
             }) { url, progress in
                 DispatchQueue.main.async {
                     operationProgress = progress
-                    operationProgressHint = "Sending \(url.path)"
+                    operationProgressHint = String(
+                        format: NSLocalizedString("Uploading %@", comment: ""),
+                        url.lastPathComponent
+                    )
                 }
             }
             DispatchQueue.withMainAndWait {
@@ -101,7 +107,7 @@ extension DeviceFileView {
                 .map { sourcePath.appendingPathComponent($0) }
             DispatchQueue.withMainAndWait {
                 operationProgress = Progress()
-                operationProgressHint = "Preparing Download"
+                operationProgressHint = NSLocalizedString("Preparing Download", comment: "")
             }
             device.downloadFiles(atPaths: paths, toDest: toUrl, setPid: { pid in
                 DispatchQueue.withMainAndWait {
@@ -110,7 +116,10 @@ extension DeviceFileView {
             }) { url, progress in
                 DispatchQueue.withMainAndWait {
                     operationProgress = progress
-                    operationProgressHint = "Downloading \(url.path)"
+                    operationProgressHint = String(
+                        format: NSLocalizedString("Downloading %@", comment: ""),
+                        url.lastPathComponent
+                    )
                 }
             }
             DispatchQueue.withMainAndWait {

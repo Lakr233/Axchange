@@ -122,9 +122,12 @@ struct DeviceFileView: View {
                 ToolbarItem {
                     Button {
                         let msg = NSAlert()
-                        msg.addButton(withTitle: "Confirm")
-                        msg.addButton(withTitle: "Cancel")
-                        msg.messageText = "Are you sure you want to delete \(selection.count) files?"
+                        msg.addButton(withTitle: NSLocalizedString("Confirm", comment: ""))
+                        msg.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
+                        msg.messageText = String(
+                            format: NSLocalizedString("Are you sure you want to delete %d files?", comment: ""),
+                            selection.count
+                        )
 
                         guard let window = NSApp.keyWindow else {
                             return
@@ -145,6 +148,10 @@ struct DeviceFileView: View {
                         panel.allowsMultipleSelection = true
                         panel.canChooseDirectories = true
                         panel.resolvesAliases = true
+                        panel.message = String(
+                            format: NSLocalizedString("Select files to upload to %@", comment: ""),
+                            sourcePath.lastPathComponent
+                        )
                         guard let window = NSApp.keyWindow else {
                             return
                         }
@@ -153,7 +160,7 @@ struct DeviceFileView: View {
                             uploadFiles(atUrl: panel.urls)
                         }
                     } label: {
-                        Label("Upload", systemImage: "arrow.up")
+                        Label("Upload", systemImage: "iphone.and.arrow.forward.inward")
                     }
                 }
                 ToolbarItem {
