@@ -66,14 +66,14 @@ public final class Executor {
         scanQueue.async {
             var previousDevices = [Device]()
             DispatchQueue.withMainAndWait {
-                AppStatus.shared.isScanningDevices = true
-                previousDevices = AppStatus.shared.devices
+                AppModel.shared.isScanningDevices = true
+                previousDevices = AppModel.shared.devices
             }
             print("[*] scanning for devices")
             defer {
                 print("[*] scan completed")
                 DispatchQueue.withMainAndWait {
-                    AppStatus.shared.isScanningDevices = false
+                    AppModel.shared.isScanningDevices = false
                 }
             }
 
@@ -111,7 +111,7 @@ public final class Executor {
             sleep(1)
 
             DispatchQueue.withMainAndWait {
-                AppStatus.shared.devices = deviceBuilder
+                AppModel.shared.devices = deviceBuilder
             }
         }
     }

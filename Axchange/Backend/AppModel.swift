@@ -1,5 +1,5 @@
 //
-//  AppStatus.swift
+//  AppModel.swift
 //  Axchange
 //
 //  Created by Lakr Aream on 2022/7/26.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-class AppStatus: ObservableObject {
-    static let shared = AppStatus()
+class AppModel: ObservableObject {
+    static let shared = AppModel()
 
     @Published var isScanningDevices = false
 

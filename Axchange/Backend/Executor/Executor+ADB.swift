@@ -11,7 +11,7 @@ import Foundation
 extension Executor {
     static let adbBinaryLocation = Bundle
         .main
-        .url(forResource: "adb", withExtension: nil, subdirectory: "Auxiliary")!
+        .url(forAuxiliaryExecutable: "adb")!
 
     static let version = "Android Debug Bridge version 1.0.41"
 

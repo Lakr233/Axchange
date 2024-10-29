@@ -7,13 +7,8 @@
 
 import SwiftUI
 
-#if DEBUG
-    private let stubNavigationTarget: some View = Text("Hello World")
-        .usePreferredContentSize()
-#endif
-
 struct SidebarView: View {
-    @ObservedObject var appStatus = AppStatus.shared
+    @ObservedObject var appStatus = AppModel.shared
 
     var progressIndicator: some View {
         HStack(spacing: 4) {
@@ -74,7 +69,7 @@ struct SidebarView: View {
                 .buttonStyle(PlainButtonStyle())
                 Button {
                     Executor.resetADB()
-                    AppStatus.shared.devices = []
+                    AppModel.shared.devices = []
                 } label: {
                     HStack {
                         Label("Reset", systemImage: "drop.triangle")
