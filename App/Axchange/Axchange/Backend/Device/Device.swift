@@ -42,7 +42,7 @@ class Device: ObservableObject, Equatable, Identifiable {
     let adbQueue: DispatchQueue!
 
     var interfaceName: String {
-        if let deviceName = deviceName {
+        if let deviceName {
             return deviceName
         }
         return "[\(adbIdentifier)]"

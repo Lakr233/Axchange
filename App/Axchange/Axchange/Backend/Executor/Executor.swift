@@ -86,7 +86,7 @@ public final class Executor {
                 let updater = listResults.first { object in
                     object.0 == alreadyExistsDevice.adbIdentifier
                 }
-                guard let updater = updater else { continue }
+                guard let updater else { continue }
                 deviceBuilder.append(alreadyExistsDevice)
                 DispatchQueue.withMainAndWait {
                     alreadyExistsDevice.deviceStatus = updater.1

@@ -21,7 +21,7 @@ struct WelcomeView: View {
         #endif
         return ret
     }
-    
+
     struct Colorful: ColorfulColors {
         var colors: [ColorElement] { [
             .init(Color.accentColor),

@@ -74,7 +74,7 @@ extension Device {
         if name == nil, let retry = meta["persist.sys.device_name"] {
             name = retry
         }
-        guard let name = name else { return }
+        guard let name else { return }
         DispatchQueue.withMainAndWait {
             guard self.deviceName != name else {
                 return
