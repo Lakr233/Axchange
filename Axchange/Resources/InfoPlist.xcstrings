@@ -11,7 +11,8 @@
             "value" : "Axchange"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "CFBundleName" : {
       "comment" : "Bundle name",
