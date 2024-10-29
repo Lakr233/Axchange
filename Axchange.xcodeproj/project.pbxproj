@@ -57,6 +57,7 @@
 		504D5FA72CD0C76200734B56 /* Entitlements-Subprocess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Entitlements-Subprocess.entitlements"; sourceTree = "<group>"; };
 		504D5FA82CD0C8B600734B56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		504D5FAA2CD0C97800734B56 /* EmbedADB.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EmbedADB.sh; sourceTree = "<group>"; };
+		5074928F2CD0D04B001B787A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceFileView+LogElement.swift"; sourceTree = "<group>"; };
 		50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Exec.swift"; sourceTree = "<group>"; };
 		50EB3BA52890FEDF00CB1BDA /* Device+Prop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Prop.swift"; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		504711DD289023AE005BD174 /* Axchange */ = {
 			isa = PBXGroup;
 			children = (
+				5074928F2CD0D04B001B787A /* Info.plist */,
 				504D5FA82CD0C8B600734B56 /* main.swift */,
 				504711F928902674005BD174 /* Backend */,
 				504711F0289023E6005BD174 /* Interface */,
@@ -452,7 +454,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 964G86XT2P;
@@ -462,6 +464,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Axchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Axchange;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Lakr Aream. All Rights Reserved.";
@@ -487,7 +490,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 964G86XT2P;
@@ -497,6 +500,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Axchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Axchange;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Lakr Aream. All Rights Reserved.";
