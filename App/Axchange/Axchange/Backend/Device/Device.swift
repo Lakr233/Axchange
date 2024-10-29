@@ -28,7 +28,7 @@ class Device: ObservableObject, Equatable, Identifiable {
     struct DeviceExecLog: Identifiable, Hashable, Equatable {
         var id: UUID = .init()
         let command: String
-        let recipt: AuxiliaryExecute.ExecuteRecipe
+        let recipt: AuxiliaryExecute.ExecuteReceipt
 
         func hash(into hasher: inout Hasher) {
             hasher.combine(id)

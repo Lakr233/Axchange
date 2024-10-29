@@ -14,7 +14,6 @@
 		504711E3289023AE005BD174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504711E2289023AE005BD174 /* Assets.xcassets */; };
 		504711EE289023C9005BD174 /* Auxiliary in Resources */ = {isa = PBXBuildFile; fileRef = 504711ED289023C9005BD174 /* Auxiliary */; };
 		504711F32890242E005BD174 /* AuxiliaryExecute in Frameworks */ = {isa = PBXBuildFile; productRef = 504711F22890242E005BD174 /* AuxiliaryExecute */; };
-		504711F52890242E005BD174 /* Colorful in Frameworks */ = {isa = PBXBuildFile; productRef = 504711F42890242E005BD174 /* Colorful */; };
 		504711F828902603005BD174 /* App+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504711F728902603005BD174 /* App+Setup.swift */; };
 		504711FB28902680005BD174 /* Executor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504711FA28902680005BD174 /* Executor.swift */; };
 		504711FE2890287F005BD174 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504711FD2890287F005BD174 /* SidebarView.swift */; };
@@ -24,6 +23,8 @@
 		50471208289030A3005BD174 /* Executor+ADB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50471207289030A3005BD174 /* Executor+ADB.swift */; };
 		5047120A28903110005BD174 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047120928903110005BD174 /* DispatchQueue.swift */; };
 		5047120F2890322A005BD174 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5047120E2890322A005BD174 /* Device.swift */; };
+		504D5F992CD0C2EA00734B56 /* AuxiliaryExecute in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F982CD0C2EA00734B56 /* AuxiliaryExecute */; };
+		504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F9B2CD0C30500734B56 /* ColorfulX */; };
 		50B8FD7C28927A0800B3BC33 /* DeviceFileView+LogElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */; };
 		50EB3BA42890FCF100CB1BDA /* Device+Exec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */; };
 		50EB3BA62890FEDF00CB1BDA /* Device+Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA52890FEDF00CB1BDA /* Device+Prop.swift */; };
@@ -63,8 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504711F52890242E005BD174 /* Colorful in Frameworks */,
 				504711F32890242E005BD174 /* AuxiliaryExecute in Frameworks */,
+				504D5F992CD0C2EA00734B56 /* AuxiliaryExecute in Frameworks */,
+				504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +209,8 @@
 			name = Axchange;
 			packageProductDependencies = (
 				504711F22890242E005BD174 /* AuxiliaryExecute */,
-				504711F42890242E005BD174 /* Colorful */,
+				504D5F982CD0C2EA00734B56 /* AuxiliaryExecute */,
+				504D5F9B2CD0C30500734B56 /* ColorfulX */,
 			);
 			productName = Axchange;
 			productReference = 504711DB289023AE005BD174 /* Axchange.app */;
@@ -237,6 +240,10 @@
 				Base,
 			);
 			mainGroup = 504711D2289023AE005BD174;
+			packageReferences = (
+				504D5F972CD0C2EA00734B56 /* XCRemoteSwiftPackageReference "AuxiliaryExecute" */,
+				504D5F9A2CD0C30500734B56 /* XCRemoteSwiftPackageReference "ColorfulX" */,
+			);
 			productRefGroup = 504711DC289023AE005BD174 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -501,14 +508,39 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		504D5F972CD0C2EA00734B56 /* XCRemoteSwiftPackageReference "AuxiliaryExecute" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lakr233/AuxiliaryExecute";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+		504D5F9A2CD0C30500734B56 /* XCRemoteSwiftPackageReference "ColorfulX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Lakr233/ColorfulX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.5.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		504711F22890242E005BD174 /* AuxiliaryExecute */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AuxiliaryExecute;
 		};
-		504711F42890242E005BD174 /* Colorful */ = {
+		504D5F982CD0C2EA00734B56 /* AuxiliaryExecute */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Colorful;
+			package = 504D5F972CD0C2EA00734B56 /* XCRemoteSwiftPackageReference "AuxiliaryExecute" */;
+			productName = AuxiliaryExecute;
+		};
+		504D5F9B2CD0C30500734B56 /* ColorfulX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 504D5F9A2CD0C30500734B56 /* XCRemoteSwiftPackageReference "ColorfulX" */;
+			productName = ColorfulX;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

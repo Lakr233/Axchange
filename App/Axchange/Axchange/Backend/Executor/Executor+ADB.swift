@@ -20,7 +20,7 @@ extension Executor {
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
-    ) -> AuxiliaryExecute.ExecuteRecipe {
+    ) -> AuxiliaryExecute.ExecuteReceipt {
         AuxiliaryExecute.spawn(
             command: adbBinaryLocation.path,
             args: parameters,
@@ -37,7 +37,7 @@ extension Executor {
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
-    ) -> AuxiliaryExecute.ExecuteRecipe {
+    ) -> AuxiliaryExecute.ExecuteReceipt {
         executeADB(
             withParameters: ["-s", deviceName] + parameters,
             timeout: timeout,

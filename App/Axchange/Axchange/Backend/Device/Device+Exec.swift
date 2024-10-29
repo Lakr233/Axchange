@@ -14,7 +14,7 @@ extension Device {
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil
-    ) -> AuxiliaryExecute.ExecuteRecipe {
+    ) -> AuxiliaryExecute.ExecuteReceipt {
         let recipe = Executor.executeADB(
             withParameters: ["-s", adbIdentifier] + parameters,
             timeout: timeout,
@@ -35,7 +35,7 @@ extension Device {
 
     func executeADB(command: String, setPid: ((pid_t) -> Void)? = nil) -> String {
         let parms = command.components(separatedBy: " ").filter { !$0.isEmpty }
-        let recipe: AuxiliaryExecute.ExecuteRecipe = executeADB(
+        let recipe: AuxiliaryExecute.ExecuteReceipt = executeADB(
             withParameters: parms,
             setPid: setPid
         )
