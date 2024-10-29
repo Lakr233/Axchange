@@ -13,7 +13,14 @@ extension Executor {
         .main
         .url(forAuxiliaryExecutable: "adb")!
 
-    static let version = "Android Debug Bridge version 1.0.41"
+    static let version: String = {
+        let result = executeADB(withParameters: ["version"])
+        return result.stdout.components(separatedBy: "\n")
+            .first?
+            .components(separatedBy: " ")
+            .last
+            ?? "0"
+    }()
 
     static func executeADB(
         withParameters parameters: [String],
