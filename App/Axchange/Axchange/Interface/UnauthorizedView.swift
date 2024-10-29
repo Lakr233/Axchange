@@ -5,7 +5,7 @@
 //  Created by Lakr Aream on 2022/7/27.
 //
 
-import Colorful
+import ColorfulX
 import SwiftUI
 
 struct UnauthorizedView: View {
@@ -22,8 +22,6 @@ struct UnauthorizedView: View {
 
     var body: some View {
         ZStack {
-            ColorfulView(colors: [.red], colorCount: 4)
-                .ignoresSafeArea()
             VStack {
                 errorIcon
                 Text("Device \(device.adbIdentifier) is unauthorized")
@@ -37,6 +35,12 @@ struct UnauthorizedView: View {
             }
             .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            ColorfulView(color: .sunset)
+                .opacity(0.5)
+                .ignoresSafeArea()
+        )
         .navigationTitle("Permission Denied")
     }
 }

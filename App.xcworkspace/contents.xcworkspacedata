@@ -4,10 +4,4 @@
    <FileRef
       location = "group:App/Axchange/Axchange.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:External/AuxiliaryExecute">
-   </FileRef>
-   <FileRef
-      location = "group:External/Colorful">
-   </FileRef>
 </Workspace>

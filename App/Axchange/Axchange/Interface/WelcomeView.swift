@@ -5,7 +5,7 @@
 //  Created by Lakr Aream on 2022/7/26.
 //
 
-import Colorful
+import ColorfulX
 import SwiftUI
 
 struct WelcomeView: View {
@@ -21,11 +21,22 @@ struct WelcomeView: View {
         #endif
         return ret
     }
+    
+    struct Colorful: ColorfulColors {
+        var colors: [ColorElement] { [
+            .init(Color.accentColor),
+            .init(Color.accentColor),
+            .init(Color.accentColor),
+            .init(Color.accentColor),
+            .init(Color.clear),
+            .init(Color.clear),
+            .init(Color.clear),
+            .init(Color.clear),
+        ] }
+    }
 
     var body: some View {
         ZStack {
-            ColorfulView(colors: [.accentColor], colorCount: 4)
-                .ignoresSafeArea()
             VStack(spacing: 4) {
                 Image("Avatar")
                     .antialiased(true)
@@ -50,6 +61,12 @@ struct WelcomeView: View {
         }
         .padding()
         .navigationTitle("Axchange")
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            ColorfulView(color: Colorful())
+                .opacity(0.25)
+                .ignoresSafeArea()
+        )
         .usePreferredContentSize()
     }
 }
