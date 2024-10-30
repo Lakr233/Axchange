@@ -39,7 +39,7 @@ class Device: ObservableObject, Equatable, Identifiable {
         }
     }
 
-    let adbQueue: DispatchQueue!
+    let adbQueue: DispatchQueue
 
     var interfaceName: String {
         if let deviceName {
@@ -50,7 +50,7 @@ class Device: ObservableObject, Equatable, Identifiable {
 
     init(identifier: String, status: Status = .unauthorized) {
         adbIdentifier = identifier
-        adbQueue = DispatchQueue(label: "wiki.qaq.device.\(adbIdentifier)")
+        adbQueue = DispatchQueue(label: "wiki.qaq.device.\(adbIdentifier)", qos: .userInitiated)
         _deviceStatus = Published<Status>(initialValue: status)
     }
 

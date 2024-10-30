@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension DeviceFileView {
-    struct LogElement: View {
+    struct LogElementView: View {
         let record: Device.DeviceExecLog
 
         var body: some View {

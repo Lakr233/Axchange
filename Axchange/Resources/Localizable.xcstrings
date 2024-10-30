@@ -12,6 +12,9 @@
       },
       "shouldTranslate" : false
     },
+    "%@" : {
+
+    },
     "%lld/%lld" : {
       "localizations" : {
         "en" : {
@@ -21,9 +24,6 @@
           }
         }
       },
-      "shouldTranslate" : false
-    },
-    "🏳️‍🌈" : {
       "shouldTranslate" : false
     },
     "Accept" : {
@@ -525,6 +525,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开关侧栏"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "类型"
           }
         }
       }
