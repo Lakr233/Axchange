@@ -25,7 +25,8 @@
 		504D5F9E2CD0C52C00734B56 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 504D5F9D2CD0C52C00734B56 /* Localizable.xcstrings */; };
 		504D5FA02CD0C53100734B56 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 504D5F9F2CD0C53100734B56 /* InfoPlist.xcstrings */; };
 		504D5FA92CD0C8B600734B56 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504D5FA82CD0C8B600734B56 /* main.swift */; };
-		504D5FAB2CD0C97800734B56 /* EmbedADB.sh in Resources */ = {isa = PBXBuildFile; fileRef = 504D5FAA2CD0C97800734B56 /* EmbedADB.sh */; };
+		505303C62CD1D2A300FC2AC6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 505303C52CD1D2A300FC2AC6 /* LICENSE.txt */; };
+		505303C82CD1D36A00FC2AC6 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505303C72CD1D36A00FC2AC6 /* LicenseView.swift */; };
 		50B8FD7C28927A0800B3BC33 /* DeviceFileView+LogElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */; };
 		50EB3BA42890FCF100CB1BDA /* Device+Exec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */; };
 		50EB3BA62890FEDF00CB1BDA /* Device+Prop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EB3BA52890FEDF00CB1BDA /* Device+Prop.swift */; };
@@ -55,6 +56,8 @@
 		504D5FA72CD0C76200734B56 /* Entitlements-Subprocess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Entitlements-Subprocess.entitlements"; sourceTree = "<group>"; };
 		504D5FA82CD0C8B600734B56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		504D5FAA2CD0C97800734B56 /* EmbedADB.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EmbedADB.sh; sourceTree = "<group>"; };
+		505303C52CD1D2A300FC2AC6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		505303C72CD1D36A00FC2AC6 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		5074928F2CD0D04B001B787A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		50B8FD7B28927A0800B3BC33 /* DeviceFileView+LogElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceFileView+LogElement.swift"; sourceTree = "<group>"; };
 		50EB3BA32890FCF100CB1BDA /* Device+Exec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Exec.swift"; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				504711FD2890287F005BD174 /* SidebarView.swift */,
 				504711FF28902886005BD174 /* WelcomeView.swift */,
 				50EB3BA92891218D00CB1BDA /* UnauthorizedView.swift */,
+				505303C72CD1D36A00FC2AC6 /* LicenseView.swift */,
 				50059A6A2891BFF8003D0CD4 /* DeviceFileView */,
 			);
 			path = Interface;
@@ -186,6 +190,7 @@
 				504711E2289023AE005BD174 /* Assets.xcassets */,
 				504D5F9D2CD0C52C00734B56 /* Localizable.xcstrings */,
 				504D5F9F2CD0C53100734B56 /* InfoPlist.xcstrings */,
+				505303C52CD1D2A300FC2AC6 /* LICENSE.txt */,
 				504D5FAA2CD0C97800734B56 /* EmbedADB.sh */,
 			);
 			path = Resources;
@@ -261,7 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				504711E3289023AE005BD174 /* Assets.xcassets in Resources */,
-				504D5FAB2CD0C97800734B56 /* EmbedADB.sh in Resources */,
+				505303C62CD1D2A300FC2AC6 /* LICENSE.txt in Resources */,
 				504D5FA02CD0C53100734B56 /* InfoPlist.xcstrings in Resources */,
 				504D5F9E2CD0C52C00734B56 /* Localizable.xcstrings in Resources */,
 			);
@@ -298,6 +303,7 @@
 			files = (
 				50EB3BA42890FCF100CB1BDA /* Device+Exec.swift in Sources */,
 				504711FB28902680005BD174 /* Executor.swift in Sources */,
+				505303C82CD1D36A00FC2AC6 /* LicenseView.swift in Sources */,
 				5047120028902886005BD174 /* WelcomeView.swift in Sources */,
 				50059A6C2891C010003D0CD4 /* DeviceFileView+Helper.swift in Sources */,
 				5047120F2890322A005BD174 /* Device.swift in Sources */,

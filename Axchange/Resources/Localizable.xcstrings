@@ -26,6 +26,16 @@
     "🏳️‍🌈" : {
       "shouldTranslate" : false
     },
+    "Accept" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "接受"
+          }
+        }
+      }
+    },
     "Are you sure you want to delete %d files?" : {
       "localizations" : {
         "en" : {
@@ -489,6 +499,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "大小"
+          }
+        }
+      }
+    },
+    "Software License" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "软件许可"
           }
         }
       }
