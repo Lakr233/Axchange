@@ -209,9 +209,9 @@ struct DeviceFileView: View {
 
     var deviceLogView: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 2) {
+            LazyVStack(alignment: .leading, spacing: 2) {
                 ForEach(device.deviceLog) { record in
-                    LogElement(record: record)
+                    LogElementView(record: record)
                     Divider().tag(record.id)
                 }
             }
@@ -320,27 +320,36 @@ struct DeviceFileView: View {
 
     var tableView: some View {
         Table(selection: $selection, sortOrder: $sortOrder) {
-            TableColumn("🏳️‍🌈", value: \.type) { element in
+            TableColumn("Type", value: \.type) { element in
                 Group {
                     if element.type == "directory" {
-                        Image(systemName: "folder")
+                        Text("\(Image(systemName: "folder"))")
+                            .underline()
                             .onTapGesture { sourcePath.appendPathComponent(element.name) }
+                            .onHover { hover in
+                                if hover {
+                                    NSCursor.pointingHand.push()
+                                } else {
+                                    NSCursor.pop()
+                                }
+                            }
                     } else if element.type == "symbolic link" {
-                        Image(systemName: "link")
+                        Text("\(Image(systemName: "link"))")
+                            .underline()
                             .onTapGesture { sourcePath.appendPathComponent(element.name) }
+                            .onHover { hover in
+                                if hover {
+                                    NSCursor.pointingHand.push()
+                                } else {
+                                    NSCursor.pop()
+                                }
+                            }
                     } else {
                         Image(systemName: "doc")
                     }
                 }
                 .foregroundColor(.accentColor)
                 .frame(maxWidth: .infinity)
-                .onHover { hover in
-                    if hover {
-                        NSCursor.pointingHand.push()
-                    } else {
-                        NSCursor.pop()
-                    }
-                }
             }
             .width(19)
             TableColumn("Name", value: \.name) { element in

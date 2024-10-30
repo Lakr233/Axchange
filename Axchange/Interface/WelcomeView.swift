@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @State var showLicense = false
-    
+
     var version: String {
         var ret = String(
             format: NSLocalizedString("Version: %@ Build: %@ ADB: %@", comment: ""),

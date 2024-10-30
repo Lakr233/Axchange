@@ -48,7 +48,7 @@ struct LicenseView: View {
         .padding(16)
         .frame(width: 600, height: 400)
     }
-    
+
     func load() {
         loading = false
         text = licenseText
