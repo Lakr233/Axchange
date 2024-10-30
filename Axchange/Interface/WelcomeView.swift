@@ -9,6 +9,8 @@ import ColorfulX
 import SwiftUI
 
 struct WelcomeView: View {
+    @State var showLicense = false
+    
     var version: String {
         var ret = String(
             format: NSLocalizedString("Version: %@ Build: %@ ADB: %@", comment: ""),
@@ -57,6 +59,16 @@ struct WelcomeView: View {
                 Text(version)
                     .font(.system(size: 10, weight: .semibold, design: .rounded))
                     .opacity(0.5)
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button("Software License") {
+                    showLicense = true
+                }
+                .sheet(isPresented: $showLicense) {
+                    LicenseView()
+                }
             }
         }
         .padding()
