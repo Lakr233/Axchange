@@ -10,13 +10,13 @@ import SwiftUI
 
 extension DeviceFileView {
     func navigateBack() {
-        sourcePath.deleteLastPathComponent()
+        sourcePath = RemotePath.deletingLastComponent(sourcePath)
         searchKey = ""
     }
 
     func updateDataSource() {
-        let path = sourcePath
-        UserDefaults.standard.set(path.path, forKey: device.adbIdentifier)
+        let path = RemotePath.normalize(sourcePath)
+        UserDefaults.standard.set(path, forKey: device.adbIdentifier)
         updateQueue.async {
             DispatchQueue.withMainAndWait {
                 self.isLoading = true
@@ -28,7 +28,7 @@ extension DeviceFileView {
                 }
             }
             device.requestUpdateDeviceAuthorizeStatus()
-            let list = device.listDir(withUrl: path)
+            let list = device.listDir(atPath: path)
             DispatchQueue.withMainAndWait {
                 dataSource = list
             }
@@ -36,8 +36,8 @@ extension DeviceFileView {
     }
 
     func renameItem(withName: String, newName: String) {
-        let origPath = sourcePath.appendingPathComponent(withName)
-        let newPath = sourcePath.appendingPathComponent(newName)
+        let origPath = RemotePath.join(dir: sourcePath, component: withName)
+        let newPath = RemotePath.join(dir: sourcePath, component: newName)
         device.moveFile(atPath: origPath, toPath: newPath)
         updateDataSource()
     }
@@ -48,7 +48,7 @@ extension DeviceFileView {
         msg.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
         msg.messageText = String(
             format: NSLocalizedString("Create New Folder in %@", comment: ""),
-            sourcePath.lastPathComponent
+            RemotePath.lastComponent(sourcePath),
         )
 
         let txt = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
@@ -67,7 +67,7 @@ extension DeviceFileView {
             else {
                 return
             }
-            device.createFolder(atPath: sourcePath.appendingPathComponent(text))
+            device.createFolder(atPath: RemotePath.join(dir: sourcePath, component: text))
             updateDataSource()
         }
     }
@@ -78,7 +78,7 @@ extension DeviceFileView {
         msg.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
         msg.messageText = String(
             format: NSLocalizedString("Are you sure you want to delete %d files?", comment: ""),
-            selection.count
+            selection.count,
         )
 
         guard let window = NSApp.keyWindow else {
@@ -91,7 +91,7 @@ extension DeviceFileView {
     }
 
     func deleteFiles(names: [String]) {
-        device.deleteFiles(atPaths: names.map { sourcePath.appendingPathComponent($0) })
+        device.deleteFiles(atPaths: names.map { RemotePath.join(dir: sourcePath, component: $0) })
         updateDataSource()
     }
 
@@ -103,7 +103,7 @@ extension DeviceFileView {
         panel.resolvesAliases = true
         panel.message = String(
             format: NSLocalizedString("Select files to upload to %@", comment: ""),
-            sourcePath.lastPathComponent
+            RemotePath.lastComponent(sourcePath),
         )
         guard let window = NSApp.keyWindow else {
             return
@@ -129,7 +129,7 @@ extension DeviceFileView {
                     operationProgress = progress
                     operationProgressHint = String(
                         format: NSLocalizedString("Uploading %@", comment: ""),
-                        url.lastPathComponent
+                        url.lastPathComponent,
                     )
                 }
             }
@@ -165,7 +165,7 @@ extension DeviceFileView {
         DispatchQueue.global().async {
             let paths = selection
                 .map(\.name)
-                .map { sourcePath.appendingPathComponent($0) }
+                .map { RemotePath.join(dir: sourcePath, component: $0) }
             DispatchQueue.withMainAndWait {
                 operationProgress = Progress()
                 operationProgressHint = NSLocalizedString("Preparing Download", comment: "")
@@ -174,12 +174,12 @@ extension DeviceFileView {
                 DispatchQueue.withMainAndWait {
                     self.operationProcessPid = pid
                 }
-            }) { url, progress in
+            }) { path, progress in
                 DispatchQueue.withMainAndWait {
                     operationProgress = progress
                     operationProgressHint = String(
                         format: NSLocalizedString("Downloading %@", comment: ""),
-                        url.lastPathComponent
+                        (path as NSString).lastPathComponent,
                     )
                 }
             }
@@ -218,7 +218,7 @@ extension DeviceFileView {
     }
 
     func pushIntoDirectory(byAppendingPath name: String) {
-        sourcePath.appendPathComponent(name)
+        sourcePath = RemotePath.join(dir: sourcePath, component: name)
     }
 
     enum QuickAction: String, Equatable, Codable {
@@ -245,7 +245,7 @@ extension DeviceFileView {
         try? FileManager.default.createDirectory(
             at: tempDir,
             withIntermediateDirectories: true,
-            attributes: nil
+            attributes: nil,
         )
         selection = selections
         downloadSelection(toUrl: tempDir) {
@@ -256,7 +256,7 @@ extension DeviceFileView {
                 if !FileManager.default.fileExists(atPath: url.path) {
                     error = String(
                         format: NSLocalizedString("Failed to download item %@", comment: ""),
-                        item.name
+                        item.name,
                     )
                     break
                 }

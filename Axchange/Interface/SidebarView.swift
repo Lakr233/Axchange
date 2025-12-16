@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SidebarView: View {
     @StateObject var appStatus = AppModel.shared
+    @Binding var selection: SidebarSelection
 
     var progressIndicator: some View {
         HStack(spacing: 4) {
@@ -18,7 +19,7 @@ struct SidebarView: View {
                 .overlay(
                     ProgressView()
                         .progressViewStyle(.circular)
-                        .scaleEffect(0.4)
+                        .scaleEffect(0.4),
                 )
                 .frame(width: 18, height: 18)
             Text("Scanning...")
@@ -29,34 +30,22 @@ struct SidebarView: View {
     }
 
     var body: some View {
-        List {
-            NavigationLink {
-                WelcomeView()
-            } label: {
-                Label("Welcome", systemImage: "sun.min.fill")
-            }
+        List(selection: $selection) {
+            Label("Welcome", systemImage: "sun.min.fill")
+                .tag(SidebarSelection.welcome)
 
             Section("Devices") {
                 if appStatus.devices.isEmpty {
-                    Button {} label: {
-                        HStack {
-                            Label("No Device", systemImage: "app.dashed")
-                            Spacer()
-                        }
-                        .background(Color.accentColor.opacity(0.0001))
-                    }
-                    .buttonStyle(PlainButtonStyle())
+                    Label("No Device", systemImage: "app.dashed")
+                        .tag(SidebarSelection.guide)
                 } else {
                     ForEach(appStatus.devices) { device in
-                        NavigationLink {
-                            DeviceFileView(device: device)
-                        } label: {
-                            Label(device.interfaceName, systemImage: "flipphone")
-                        }
+                        Label(device.interfaceName, systemImage: "flipphone")
+                            .tag(SidebarSelection.device(deviceID: device.id))
                     }
                 }
             }
-            Section {
+            Section("Misc") {
                 Button {
                     Executor.shared.scanForDevices()
                 } label: {
@@ -70,17 +59,15 @@ struct SidebarView: View {
             }
             .disabled(appStatus.isScanningDevices)
         }
-        .listStyle(SidebarListStyle())
-        .overlay(
-            progressIndicator
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: .infinity,
-                    alignment: .bottomLeading
-                )
-                .padding()
-                .opacity(appStatus.isScanningDevices ? 1 : 0)
-                .animation(.interactiveSpring(), value: appStatus.isScanningDevices)
-        )
+        .listStyle(.sidebar)
+        .safeAreaInset(edge: .bottom, alignment: .leading, spacing: 0) {
+            if appStatus.isScanningDevices {
+                progressIndicator
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .transition(.opacity)
+            }
+        }
+        .animation(.interactiveSpring(), value: appStatus.isScanningDevices)
     }
 }

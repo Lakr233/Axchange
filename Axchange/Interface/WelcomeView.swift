@@ -22,7 +22,6 @@ private extension Executor.ADBServiceType {
 }
 
 struct WelcomeView: View {
-    @State var showLicense = false
     @StateObject var appStatus = AppModel.shared
     @StateObject var executor = Executor.shared
 
@@ -33,7 +32,7 @@ struct WelcomeView: View {
             Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0",
             executor.version,
             executor.adbServerPort,
-            executor.serviceType.uiText
+            executor.serviceType.uiText,
         )
         #if DEBUG
             ret = "👾 \(ret) 👾"
@@ -80,24 +79,25 @@ struct WelcomeView: View {
             .font(.system(size: 10, weight: .semibold, design: .rounded))
             .opacity(0.5)
         }
-        .toolbar {
-            ToolbarItem {
-                Button("Software License") {
-                    showLicense = true
-                }
-                .sheet(isPresented: $showLicense) {
-                    LicenseView()
-                }
-            }
-        }
         .padding()
         .navigationTitle("Axchange")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            ColorfulView(color: Colorful())
+            ColorfulView(color: Colorful(), frameLimit: .constant(30))
                 .opacity(0.25)
-                .ignoresSafeArea()
+                .ignoresSafeArea(),
         )
         .usePreferredContentSize()
+        .removeToolbarBackgroundOnTahoe()
+    }
+}
+
+private extension View {
+    func removeToolbarBackgroundOnTahoe() -> some View {
+        if #available(macOS 15.0, *) {
+            return toolbarBackgroundVisibility(.hidden, for: .windowToolbar)
+        } else {
+            return self
+        }
     }
 }

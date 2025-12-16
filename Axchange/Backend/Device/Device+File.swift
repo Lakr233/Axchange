@@ -5,18 +5,29 @@
 //  Created by Lakr Aream on 2022/7/27.
 //
 
+import AuxiliaryExecute
 import Foundation
 
 private let jsonDecoder = JSONDecoder()
 private let maxThread = max(8, ProcessInfo().processorCount)
 
 extension Device {
-    func listDir(withUrl url: URL) -> [RemoteFile] {
+    func listDir(atPath path: String) -> [RemoteFile] {
         assert(!Thread.isMainThread)
-        let fileNames = executeADB(withParameters: ["shell", "ls", "\"\(url.path)\""], timeout: 3)
-            .stdout
-            .components(separatedBy: "\n")
-            .filter { !$0.isEmpty }
+
+        let dirCandidates = RemotePath.candidates(for: path)
+        var fileNames = [String]()
+        for candidate in dirCandidates {
+            let receipt = executeADB(withParameters: ["shell", "ls", "\"\(candidate)\""], timeout: 3)
+            guard receipt.exitCode == 0 else { continue }
+            fileNames = receipt.stdout
+                .components(separatedBy: "\n")
+                .filter { !$0.isEmpty }
+            if !fileNames.isEmpty || receipt.stderr.isEmpty {
+                break
+            }
+        }
+
         var result = [RemoteFile]()
         let sem = DispatchSemaphore(value: maxThread)
         let group = DispatchGroup()
@@ -27,8 +38,7 @@ extension Device {
                     group.leave()
                     sem.signal()
                 }
-                let path = url.appendingPathComponent(name)
-                guard let file = self.statRemoteFile(viaPath: path) else {
+                guard let file = self.statRemoteFile(inDir: path, name: name) else {
                     return
                 }
                 lock.lock()
@@ -59,45 +69,69 @@ extension Device {
     .replacingOccurrences(of: "\n", with: "")
     .replacingOccurrences(of: " ", with: "")
 
-    private func statRemoteFile(viaPath url: URL) -> RemoteFile? {
-        let output = executeADB(withParameters: ["shell", "stat", "-c", Self.statFormat, "\"\(url.path)\""], timeout: 3)
+    private func statRemoteFile(inDir dir: String, name: String) -> RemoteFile? {
+        let fullPath = RemotePath.join(dir: dir, component: name)
+        for candidate in RemotePath.candidates(for: fullPath) {
+            let output = executeADB(
+                withParameters: ["shell", "stat", "-c", Self.statFormat, "\"\(candidate)\""],
+                timeout: 3,
+            )
             .stdout
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
-        guard let data = output.data(using: .utf8),
-              let coder = try? jsonDecoder.decode(RemoteFile.Stat.self, from: data)
-        else {
-            debugPrint("[?] \(#function) \(url.path)")
-            return nil
+            guard let data = output.data(using: .utf8),
+                  let coder = try? jsonDecoder.decode(RemoteFile.Stat.self, from: data)
+            else {
+                continue
+            }
+
+            // `stat %n` returns the full path; keep dir/name split so callers can
+            // compare against just the file/folder name.
+            // Also prefer the stat-reported path for directory derivation to
+            // preserve device-side Unicode normalization.
+            let actualDir = RemotePath.deletingLastComponent(coder.name)
+            let actualName = RemotePath.lastComponent(coder.name)
+            return RemoteFile(
+                stat: coder,
+                dir: actualDir,
+                name: actualName,
+                deviceIdentifier: adbIdentifier,
+            )
         }
 
-        return RemoteFile(
-            stat: coder,
-            dir: url.deletingLastPathComponent(),
-            name: url.lastPathComponent,
-            deviceIdentifier: adbIdentifier
-        )
+        debugPrint("[?] \(#function) \(fullPath)")
+        return nil
     }
 
-    func moveFile(atPath: URL, toPath: URL) {
-        guard !atPath.path.contains("\""),
-              !toPath.path.contains("\"")
+    func moveFile(atPath: String, toPath: String) {
+        guard !atPath.contains("\""),
+              !toPath.contains("\"")
         else {
             return
         }
-        _ = executeADB(withParameters: ["shell", "mv", "\"\(atPath.path)\"", "\"\(toPath.path)\""], timeout: 3)
+        let fromCandidates = RemotePath.candidates(for: atPath)
+        let toCandidates = RemotePath.candidates(for: toPath)
+        for from in fromCandidates {
+            for to in toCandidates {
+                let receipt = executeADB(withParameters: ["shell", "mv", "\"\(from)\"", "\"\(to)\""], timeout: 3)
+                if receipt.exitCode == 0 { return }
+            }
+        }
     }
 
-    func createFolder(atPath: URL) {
-        guard !atPath.path.contains("\"") else { return }
-        _ = executeADB(withParameters: ["shell", "mkdir", "\"\(atPath.path)\""], timeout: 3)
+    func createFolder(atPath: String) {
+        guard !atPath.contains("\"") else { return }
+        for candidate in RemotePath.candidates(for: atPath) {
+            let receipt = executeADB(withParameters: ["shell", "mkdir", "\"\(candidate)\""], timeout: 3)
+            if receipt.exitCode == 0 { return }
+        }
     }
 
-    func deleteFiles(atPaths: [URL]) {
+    func deleteFiles(atPaths: [String]) {
         let group = DispatchGroup()
         let sem = DispatchSemaphore(value: maxThread)
         for path in atPaths {
-            guard !path.path.contains("\"") else { continue }
+            guard !path.contains("\"") else { continue }
             group.enter()
             sem.wait()
             DispatchQueue.global().async {
@@ -105,7 +139,10 @@ extension Device {
                     group.leave()
                     sem.signal()
                 }
-                _ = self.executeADB(withParameters: ["shell", "rm", "-rf", "\"\(path.path)\""], timeout: 3)
+                for candidate in RemotePath.candidates(for: path) {
+                    let receipt = self.executeADB(withParameters: ["shell", "rm", "-rf", "\"\(candidate)\""], timeout: 3)
+                    if receipt.exitCode == 0 { break }
+                }
             }
         }
         group.wait()
@@ -114,39 +151,56 @@ extension Device {
     @discardableResult
     func pushFiles(
         atPaths: [URL],
-        toDir: URL,
+        toDir: String,
         setPid: ((pid_t) -> Void)? = nil,
-        progress: @escaping (URL, Progress) -> Void
+        progress: @escaping (URL, Progress) -> Void,
     ) -> Error? {
-        guard !toDir.path.contains("\"") else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+        guard !toDir.contains("\"") else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+        let destCandidates = RemotePath.candidates(for: toDir).map { "\($0)/" }
         for (idx, path) in atPaths.enumerated() {
             guard !path.path.contains("\"") else { continue }
             let value = Progress(totalUnitCount: Int64(atPaths.count))
             value.completedUnitCount = Int64(idx + 1)
             progress(path, value)
-            let ret = executeADB(withParameters: ["push", path.path, "\(toDir.path)/"], setPid: setPid)
-            // killed by ourselves
-            guard ret.exitCode != 9 else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+            var lastRet: AuxiliaryExecute.ExecuteReceipt?
+            for dest in destCandidates {
+                let ret = executeADB(withParameters: ["push", path.path, dest], setPid: setPid)
+                lastRet = ret
+                // killed by ourselves
+                guard ret.exitCode != 9 else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+                if ret.exitCode == 0 { break }
+            }
+            if let lastRet, lastRet.exitCode != 0 {
+                return NSError(domain: "adb", code: Int(lastRet.exitCode), userInfo: nil)
+            }
         }
         return nil
     }
 
     @discardableResult
     func downloadFiles(
-        atPaths: [URL],
+        atPaths: [String],
         toDest: URL,
         setPid: ((pid_t) -> Void)? = nil,
-        progress: @escaping (URL, Progress) -> Void
+        progress: @escaping (String, Progress) -> Void,
     ) -> Error? {
         for (idx, path) in atPaths.enumerated() {
             // should not exist on android devices so should be good
-            guard !path.path.contains("\"") else { continue }
+            guard !path.contains("\"") else { continue }
             let value = Progress(totalUnitCount: Int64(atPaths.count))
             value.completedUnitCount = Int64(idx + 1)
             progress(path, value)
-            let ret = executeADB(withParameters: ["pull", path.path, "\(toDest.path)/"], setPid: setPid)
-            // killed by ourselves
-            guard ret.exitCode != 9 else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+            var lastRet: AuxiliaryExecute.ExecuteReceipt?
+            for candidate in RemotePath.candidates(for: path) {
+                let ret = executeADB(withParameters: ["pull", candidate, "\(toDest.path)/"], setPid: setPid)
+                lastRet = ret
+                // killed by ourselves
+                guard ret.exitCode != 9 else { return NSError(domain: "adb", code: 9, userInfo: nil) }
+                if ret.exitCode == 0 { break }
+            }
+            if let lastRet, lastRet.exitCode != 0 {
+                return NSError(domain: "adb", code: Int(lastRet.exitCode), userInfo: nil)
+            }
         }
         return nil
     }

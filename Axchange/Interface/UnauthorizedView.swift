@@ -37,9 +37,9 @@ struct UnauthorizedView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            ColorfulView(color: .sunset)
+            ColorfulView(color: .sunset, frameLimit: .constant(30))
                 .opacity(0.1)
-                .ignoresSafeArea()
+                .ignoresSafeArea(),
         )
         .navigationTitle("Permission Denied")
     }

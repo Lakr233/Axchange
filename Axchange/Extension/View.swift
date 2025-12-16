@@ -12,7 +12,7 @@ extension View {
         frame(
             minWidth: 400, idealWidth: 650, maxWidth: .infinity,
             minHeight: 300, idealHeight: 555, maxHeight: .infinity,
-            alignment: .center
+            alignment: .center,
         )
     }
 }

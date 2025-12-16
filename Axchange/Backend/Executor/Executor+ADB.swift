@@ -39,7 +39,7 @@ extension Executor {
         print("[*] adb server starting with port \(port)")
         let result = executeADB(
             withParameters: ["server", "nodaemon", "-L", "tcp:localhost:\(port)"],
-            timeout: 0
+            timeout: 0,
         ) { pid in
             print("[*] adb server started with pid \(pid)")
             DispatchQueue.main.async {
@@ -55,7 +55,7 @@ extension Executor {
         withParameters parameters: [String],
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
-        output: ((String) -> Void)? = nil
+        output: ((String) -> Void)? = nil,
     ) -> AuxiliaryExecute.ExecuteReceipt {
         let setPid = { (_ pid: pid_t) in
             self.insertSubprocessIdentifier(pid)
@@ -68,7 +68,7 @@ extension Executor {
             environment: [:],
             timeout: timeout,
             setPid: setPid,
-            output: output
+            output: output,
         )
         removeSubprocessIdentifier(pid_t(ans.pid))
         return ans
@@ -79,13 +79,13 @@ extension Executor {
         withParameters parameters: [String],
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
-        output: ((String) -> Void)? = nil
+        output: ((String) -> Void)? = nil,
     ) -> AuxiliaryExecute.ExecuteReceipt {
         executeADB(
             withParameters: ["-s", deviceName] + parameters,
             timeout: timeout,
             setPid: setPid,
-            output: output
+            output: output,
         )
     }
 

@@ -16,16 +16,16 @@ struct DeviceFileView: View {
     init(device: Device) {
         _device = StateObject(wrappedValue: device)
 
-        let initialUrl = URL(
-            fileURLWithPath: UserDefaults
+        let initialPath = RemotePath.normalize(
+            UserDefaults
                 .standard
                 .string(forKey: device.adbIdentifier)
-                ?? "/"
+                ?? "/",
         )
-        _sourcePath = State<URL>(initialValue: initialUrl)
+        _sourcePath = State<String>(initialValue: initialPath)
     }
 
-    @State var sourcePath: URL
+    @State var sourcePath: String
 
     // banner
     @State var editingPath: Bool = false
@@ -177,7 +177,7 @@ struct DeviceFileView: View {
 extension TableRow {
     func filledDraggable(_ inputItem: some Transferable) -> some TableRowContent<TableRow<Value>.TableRowValue> {
         if #available(macOS 14.0, *) {
-            return self.draggable(inputItem)
+            return draggable(inputItem)
         } else {
             return self
         }
