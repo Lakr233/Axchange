@@ -45,7 +45,7 @@ extension Device {
         let compos = line.split(
             separator: ":",
             maxSplits: 1,
-            omittingEmptySubsequences: true
+            omittingEmptySubsequences: true,
         )
         guard compos.count == 2 else { return nil }
         var key = String(compos[0]).trimmingCharacters(in: .whitespacesAndNewlines)

@@ -13,18 +13,18 @@ extension Device {
         withParameters parameters: [String],
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
-        output: ((String) -> Void)? = nil
+        output: ((String) -> Void)? = nil,
     ) -> AuxiliaryExecute.ExecuteReceipt {
         let recipe = Executor.shared.executeADB(
             withParameters: ["-s", adbIdentifier] + parameters,
             timeout: timeout,
             setPid: setPid,
-            output: output
+            output: output,
         )
         DispatchQueue.main.async {
             self.deviceLog.append(.init(
                 command: "adb \(parameters.joined(separator: " "))",
-                recipt: recipe
+                recipt: recipe,
             ))
             while self.deviceLog.count > 256 {
                 self.deviceLog.removeFirst()
@@ -37,7 +37,7 @@ extension Device {
         let parms = command.components(separatedBy: " ").filter { !$0.isEmpty }
         let recipe: AuxiliaryExecute.ExecuteReceipt = executeADB(
             withParameters: parms,
-            setPid: setPid
+            setPid: setPid,
         )
         return recipe.stdout
     }

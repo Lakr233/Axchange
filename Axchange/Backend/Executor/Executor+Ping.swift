@@ -36,7 +36,7 @@ extension Executor {
         let connection = NWConnection(
             host: NWEndpoint.Host("localhost"),
             port: NWEndpoint.Port(integerLiteral: UInt16(port)),
-            using: .tcp
+            using: .tcp,
         )
 
         var completionCalled = false

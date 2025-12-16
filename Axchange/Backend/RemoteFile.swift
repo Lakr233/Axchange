@@ -11,8 +11,17 @@ import UniformTypeIdentifiers
 struct RemoteFile: Codable, Equatable, Hashable, Identifiable {
     var id: Self { self }
 
-    let dir: URL
+    /// Remote directory path on device, e.g. "/sdcard/Music".
+    ///
+    /// Important: do not represent remote paths with `URL` as Foundation may
+    /// normalize Unicode (NFC/NFD), which can cause ADB operations to fail when
+    /// the device filename's normalization differs.
+    let dir: String
     let name: String
+
+    var path: String {
+        RemotePath.join(dir: dir, component: name)
+    }
 
     let permissions: String
     let type: String
@@ -22,7 +31,7 @@ struct RemoteFile: Codable, Equatable, Hashable, Identifiable {
 
     let deviceIdentifier: String
 
-    init?(stat: Stat, dir: URL, name: String, deviceIdentifier: String) {
+    init?(stat: Stat, dir: String, name: String, deviceIdentifier: String) {
         _ = stat
         self.dir = dir
         self.name = name
@@ -66,7 +75,7 @@ extension RemoteFile: Transferable {
                 return .init(tempDir) // some thing not exists should be good
             }
             try FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
-            let path = input.dir.appendingPathComponent(input.name)
+            let path = input.path
             print("[*] pulling \(path) from \(device.adbIdentifier)")
             await withCheckedContinuation { cont in
                 device.downloadFiles(atPaths: [path], toDest: tempDir) { _, _ in }
@@ -82,7 +91,7 @@ extension RemoteFile: Transferable {
             contentType: .data,
             shouldAttemptToOpenInPlace: true,
             exporting: exportingBehavior,
-            importing: importingBehavior
+            importing: importingBehavior,
         )
     }
 }

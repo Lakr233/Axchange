@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         try? FileManager.default.createDirectory(
             at: temporaryStorage,
             withIntermediateDirectories: true,
-            attributes: nil
+            attributes: nil,
         )
     }
 

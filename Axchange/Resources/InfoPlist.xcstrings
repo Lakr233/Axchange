@@ -34,13 +34,19 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Copyright © 2024 Lakr Aream. All Rights Reserved."
+            "value" : "Copyright © 2025 Lakr Aream. All Rights Reserved."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copyright © 2025 Lakr Aream. All Rights Reserved."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "© 2024 砍砍@标准件厂长 版权所有"
+            "value" : "© 2025 砍砍@标准件厂长 版权所有"
           }
         }
       }

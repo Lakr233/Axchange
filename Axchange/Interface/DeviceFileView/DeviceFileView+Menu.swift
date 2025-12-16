@@ -15,7 +15,7 @@ extension DeviceFileView {
             Label("Back", systemImage: "arrow.left")
         }
         .keyboardShortcut(.upArrow, modifiers: .command)
-        .disabled(sourcePath.pathComponents.count <= 1)
+        .disabled(RemotePath.pathComponents(sourcePath).count <= 1)
     }
 
     var menu_refresh: some View {
@@ -34,7 +34,7 @@ extension DeviceFileView {
             Label("New Folder", systemImage: "folder.badge.plus")
         }
         .keyboardShortcut("n", modifiers: .command)
-        .disabled(sourcePath.pathComponents.count <= 1)
+        .disabled(RemotePath.pathComponents(sourcePath).count <= 1)
     }
 
     var menu_upload: some View {
@@ -102,7 +102,7 @@ extension DeviceFileView {
                 .compactMap { id in
                     dataSource.first { $0.id == id }
                 }
-                .map { $0.dir.appendingPathComponent($0.name).path }
+                .map(\.path)
                 .joined(separator: "\n")
             NSPasteboard.general.prepareForNewContents()
             NSPasteboard.general.setString(names, forType: .string)

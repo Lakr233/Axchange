@@ -48,15 +48,15 @@ extension DeviceFileView {
             .frame(width: bannerHeight)
             Divider()
             if editingPath {
-                temporaryEditableField(initialValue: sourcePath.path) { newValue in
+                temporaryEditableField(initialValue: sourcePath) { newValue in
                     editingPath = false
-                    sourcePath = URL(fileURLWithPath: newValue)
+                    sourcePath = RemotePath.normalize(newValue)
                 }
                 .disableAutocorrection(true)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 4) {
-                        ForEach(0 ..< sourcePath.pathComponents.count, id: \.self) { idx in
+                        ForEach(0 ..< RemotePath.pathComponents(sourcePath).count, id: \.self) { idx in
                             Image(systemName: "play.fill")
                                 .foregroundColor(.gray.opacity(0.5))
                                 .font(.system(size: 8, weight: .semibold, design: .rounded))

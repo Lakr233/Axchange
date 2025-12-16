@@ -12,7 +12,7 @@ private let bytesFormatter = ByteCountFormatter()
 extension DeviceFileView {
     func temporaryEditableField(initialValue: String, onSubmit: @escaping (String) -> Void) -> some View {
         var str: String = initialValue
-        let binding = Binding<String>.init {
+        let binding = Binding<String> {
             str
         } set: { newValue in
             str = newValue
@@ -22,7 +22,7 @@ extension DeviceFileView {
     }
 
     func nthComponentAtSourcePath(_ idx: Int) -> String {
-        let comps = sourcePath.pathComponents
+        let comps = RemotePath.pathComponents(sourcePath)
         guard idx >= 0, idx < comps.count else {
             return "?"
         }
@@ -30,20 +30,7 @@ extension DeviceFileView {
     }
 
     func sliceToNthAtSourcePath(_ idx: Int) {
-        var comps = sourcePath.pathComponents
-        guard comps.count > idx + 1 else { return }
-        guard comps.count > 0 else {
-            sourcePath = URL(fileURLWithPath: "/")
-            return
-        }
-        let left = idx + 1
-        while comps.count > left {
-            comps.removeLast()
-        }
-        let subPath = comps
-            .dropFirst()
-            .joined(separator: "/")
-        sourcePath = URL(fileURLWithPath: "/" + subPath)
+        sourcePath = RemotePath.sliceToNthComponent(sourcePath, idx)
     }
 
     func formatBytes(value: UInt64) -> String {

@@ -13,11 +13,7 @@ public final class Executor: ObservableObject {
     static let shared = Executor()
 
     private let scanQueue = DispatchQueue(label: "wiki.qaq.adb.scan")
-    private var subprocessIdentifiers = Set<pid_t>() {
-        didSet {
-            print("[*] subprocess poll changed: \(subprocessIdentifiers)")
-        }
-    }
+    private var subprocessIdentifiers = Set<pid_t>()
 
     private var subprocessIdentifiersLock = NSLock()
 
@@ -91,7 +87,7 @@ public final class Executor: ObservableObject {
     func listDevices() -> [(String, Device.Status)] {
         let recipe = executeADB(
             withParameters: ["devices"],
-            timeout: 6
+            timeout: 6,
         )
         let header = "List of devices attached\n"
         guard recipe.exitCode == 0,

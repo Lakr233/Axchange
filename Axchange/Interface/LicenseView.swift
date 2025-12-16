@@ -8,7 +8,7 @@
 import SwiftUI
 
 private let licenseText = try! String(
-    contentsOf: Bundle.main.url(forResource: "LICENSE", withExtension: "txt")!
+    contentsOf: Bundle.main.url(forResource: "LICENSE", withExtension: "txt")!,
 )
 
 struct LicenseView: View {
@@ -43,9 +43,6 @@ struct LicenseView: View {
             HStack {
                 Button("Learn more about how ADB works") {
                     NSWorkspace.shared.open(URL(string: "https://developer.android.com/tools/adb")!)
-                }
-                Button("Feedback") {
-                    NSWorkspace.shared.open(URL(string: "https://github.com/Lakr233/Axchange/issues")!)
                 }
                 Spacer()
                 Button("Accept") {

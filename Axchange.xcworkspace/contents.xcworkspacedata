@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Axchange.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Axchange.xctestplan">
+   </FileRef>
 </Workspace>
