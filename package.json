@@ -1,0 +1,23 @@
+{
+  "name": "axchange.docs",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build-docs.mjs",
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-llms": "https://pkg.pr.new/vitepress-plugin-llms@62",
+    "vue": "^3.5.17"
+  }
+}
