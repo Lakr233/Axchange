@@ -9,12 +9,12 @@ import QuickLook
 import SwiftUI
 
 struct DeviceFileView: View {
-    @StateObject var device: Device
+    @ObservedObject var device: Device
 
     let bannerHeight: CGFloat = 20
 
     init(device: Device) {
-        _device = StateObject(wrappedValue: device)
+        _device = ObservedObject(wrappedValue: device)
 
         let initialPath = RemotePath.normalize(
             UserDefaults
