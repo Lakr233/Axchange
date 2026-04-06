@@ -27,6 +27,7 @@ struct MainView: View {
         case let .device(deviceID):
             if let device = appStatus.devices.first(where: { $0.id == deviceID }) {
                 DeviceFileView(device: device)
+                    .id(device.id)
             } else {
                 WelcomeView()
             }
