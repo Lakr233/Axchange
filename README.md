@@ -50,3 +50,7 @@ Thanks [@unixzii](https://twitter.com/unixzii) for being with me so many times.
 ---
 
 Copyright © 2024 Lakr Aream. All Rights Reserved.
+
+## Sponsor
+
+[LookInside](https://lookinside-app.com/) helps you inspect a running iOS or macOS app UI from your Mac.
