@@ -15,6 +15,7 @@
 		504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F9B2CD0C30500734B56 /* ColorfulX */; };
 		505A0DB12CFD78F1009E622B /* WindowAnimation in Frameworks */ = {isa = PBXBuildFile; productRef = 505A0DB02CFD78F1009E622B /* WindowAnimation */; };
 		505A0DB42CFD7981009E622B /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 505A0DB32CFD7981009E622B /* ConfettiSwiftUI */; };
+		E7A09E6684368C0F3DEFBD49 /* LookInsideServer in Frameworks */ = {isa = PBXBuildFile; productRef = A1B298ED2166F24839F9D969 /* LookInsideServer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +34,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5088533D2EEF83C100893002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		5088533D2EEF83C100893002 /* Exceptions for "Axchange" folder in "Axchange" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -44,8 +45,29 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		508852EE2EEF83C000893002 /* Axchange */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5088533D2EEF83C100893002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Axchange; sourceTree = "<group>"; };
-		508853442EEF86EE00893002 /* AxchangeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AxchangeTests; sourceTree = "<group>"; };
+		508852EE2EEF83C000893002 /* Axchange */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5088533D2EEF83C100893002 /* Exceptions for "Axchange" folder in "Axchange" target */,
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Axchange;
+			sourceTree = "<group>";
+		};
+		508853442EEF86EE00893002 /* AxchangeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = AxchangeTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +83,7 @@
 				503466702CFEB50800B41BE4 /* MarkdownUI in Frameworks */,
 				504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */,
 				505A0DB12CFD78F1009E622B /* WindowAnimation in Frameworks */,
+				E7A09E6684368C0F3DEFBD49 /* LookInsideServer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +152,7 @@
 				5034666F2CFEB50800B41BE4 /* MarkdownUI */,
 				5002CBC42DD134D9002E7A53 /* CreemKit */,
 				5002CBC62DD134D9002E7A53 /* CreemProxyKit */,
+				A1B298ED2166F24839F9D969 /* LookInsideServer */,
 			);
 			productName = Axchange;
 			productReference = 504711DB289023AE005BD174 /* Axchange.app */;
@@ -151,8 +175,6 @@
 				508853442EEF86EE00893002 /* AxchangeTests */,
 			);
 			name = AxchangeTests;
-			packageProductDependencies = (
-			);
 			productName = AxchangeTests;
 			productReference = 508853432EEF86EE00893002 /* AxchangeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -194,6 +216,7 @@
 				505A0DB22CFD7954009E622B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 				5034666E2CFEB4AB00B41BE4 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */,
+				1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */,
 			);
 			productRefGroup = 504711DC289023AE005BD174 /* Products */;
 			projectDirPath = "";
@@ -240,7 +263,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PROJECT_DIR/Axchange/Resources/SignADB.sh\n$PROJECT_DIR/Axchange/Resources/EmbedADB.sh\n";
+			shellScript = "if [ \"$CODE_SIGNING_ALLOWED\" = \"NO\" ]; then\n  echo \"Skipping ADB embedding for unsigned verification build.\"\n  exit 0\nfi\n$PROJECT_DIR/Axchange/Resources/SignADB.sh\n$PROJECT_DIR/Axchange/Resources/EmbedADB.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -461,6 +484,10 @@
 				ENABLE_RESOURCE_ACCESS_USB = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"$(inherited)",
+					"LookInsideServer*",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Axchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Axchange;
@@ -561,6 +588,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LookInsideApp/LookInside-Release.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
 		5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lakr233/CreemKit";
@@ -650,6 +685,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 505A0DB22CFD7954009E622B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
 			productName = ConfettiSwiftUI;
+		};
+		A1B298ED2166F24839F9D969 /* LookInsideServer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */;
+			productName = LookInsideServer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

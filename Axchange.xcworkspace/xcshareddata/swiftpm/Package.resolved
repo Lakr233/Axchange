@@ -1,5 +1,5 @@
 {
-  "originHash" : "ae7a165ba79b64b04f18598174a02cca5e2e7c50c9c34407ed613af43984b7ac",
+  "originHash" : "45b7be07bfbe8041a3a4ffda21bea5ad903de2f140c9f099d2ae8bc82a924789",
   "pins" : [
     {
       "identity" : "auxiliaryexecute",
@@ -43,6 +43,15 @@
       "location" : "https://github.com/Lakr233/CreemKit",
       "state" : {
         "revision" : "780bef7671194d8974ca5e7790cf668051560e5e",
+        "version" : "0.2.2"
+      }
+    },
+    {
+      "identity" : "lookinside-release",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LookInsideApp/LookInside-Release.git",
+      "state" : {
+        "revision" : "7514cfa8bd24a78f74d8b982c429e7d61ef58134",
         "version" : "0.2.2"
       }
     },

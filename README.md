@@ -47,6 +47,10 @@ Made by [@Lakr233](https://twitter.com/Lakr233) for [@lz\_\_\_233](https://twitt
 
 Thanks [@unixzii](https://twitter.com/unixzii) for being with me so many times.
 
+## Sponsor
+
+[LookInside](https://lookinside-app.com/) helps you inspect a running iOS or macOS app UI from your Mac.
+
 ---
 
 Copyright © 2024 Lakr Aream. All Rights Reserved.
