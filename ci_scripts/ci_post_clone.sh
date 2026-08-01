@@ -24,6 +24,12 @@ if ! command -v cmake >/dev/null 2>&1; then
 fi
 cmake --version | head -1
 
+if ! command -v pkg-config >/dev/null 2>&1; then
+    echo "[*] installing pkg-config"
+    brew install pkgconf
+fi
+pkg-config --version
+
 echo "[*] building adb from source"
 ./Scripts/BuildADB/make.sh
 

@@ -1,8 +1,25 @@
 #!/bin/zsh
 
+set -e
+set -o pipefail
+
 source $(dirname $0)/define.sh
 
 PATCHES_DIR=$(realpath $(dirname $0)/patches)
+
+# android.googlesource.com resets connections now and then, retry transfers
+retry() {
+    local attempt=1
+    while ! "$@"; do
+        if [ $attempt -ge 3 ]; then
+            echo "[-] failed after $attempt attempts: $@"
+            return 1
+        fi
+        attempt=$((attempt + 1))
+        echo "[!] retrying ($attempt/3): $@"
+        sleep 5
+    done
+}
 
 TARGET_DIR=$1
 if [ -z $TARGET_DIR ]; then
@@ -22,10 +39,10 @@ for source in $SOURCE_LIST; do
 
     if [ -d $name ]; then
         echo "[i] $name already exists, fetching updates"
-        git -C $name fetch --tags
+        retry git -C $name fetch --tags
     else
         echo "[+] cloning $name"
-        git clone $url $name
+        retry git clone $url $name
     fi
 
     pushd $name >/dev/null
@@ -40,7 +57,7 @@ for source in $SOURCE_LIST; do
     fi
 
     # force keeps the submodules pristine so patches apply cleanly on re-run
-    git submodule update --init --recursive --checkout --force
+    retry git submodule update --init --recursive --checkout --force
 
     # android-tools applies patches/<vendor>/*.patch with git am at configure
     # time, ours slot in through the same mechanism
