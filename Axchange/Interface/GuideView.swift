@@ -5,70 +5,43 @@
 //  Created by 秋星桥 on 2024/12/3.
 //
 
-import MarkdownUI
 import SwiftUI
 
-private let documentLink = URL(string: "https://developer.android.com/studio/debug/dev-options#enable")!
-private let feedbackLink = URL(string: "https://github.com/Lakr233/Axchange/issues")!
-
 struct GuideView: View {
-    @State var openFeedbackAlert = false
+    @StateObject var appStatus = AppModel.shared
 
     var body: some View {
-        ScrollView(.vertical) {
-            Markdown {
-                Paragraph {
-                    NSLocalizedString("Follow the instructions below to connect your device.", comment: "")
+        VStack(spacing: 12) {
+            Image(systemName: "cable.connector.horizontal")
+                .font(.system(size: 48, weight: .light))
+                .foregroundColor(.accentColor)
+                .padding(.bottom, 4)
+
+            Text("No Device Connected")
+                .font(.system(.headline, design: .rounded))
+
+            Text("Enable ADB on your device, connect it with a cable, then scan.")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: 320)
+
+            HStack(spacing: 8) {
+                Button("Scan") {
+                    Executor.shared.scanForDevices()
                 }
-                ThematicBreak()
-                NumberedList {
-                    ListItem {
-                        NSLocalizedString("Enable ADB on Device", comment: "")
-                        Paragraph {
-                            NSLocalizedString("Please refer to", comment: "")
-                            " "
-                            InlineLink(NSLocalizedString("Google's Document", comment: ""), destination: documentLink)
-                            " "
-                            NSLocalizedString("to enable ADB on your device.", comment: "")
-                        }
-                        Paragraph {
-                            NSLocalizedString("For different devices, the way to enable ADB may vary. Please refer to your device manual.", comment: "")
-                        }
-                    }
-                    ListItem {
-                        NSLocalizedString("Connect your device", comment: "")
-                        Paragraph {
-                            NSLocalizedString("Please connect your device via a cable.", comment: "")
-                        }
-                        Paragraph {
-                            NSLocalizedString("For advanced users, setup a wireless connection on your own.", comment: "")
-                        }
-                    }
-                    ListItem {
-                        NSLocalizedString("Click Scan", comment: "")
-                        Paragraph {
-                            NSLocalizedString("For a stable user experience, please click the scan button to search for devices.", comment: "")
-                        }
-                        Paragraph {
-                            NSLocalizedString("Please also authorize the connection on your device.", comment: "")
-                        }
-                    }
+                .buttonStyle(.borderedProminent)
+                .disabled(appStatus.isScanningDevices)
+
+                Button("Documentation") {
+                    DocumentationWindowController.show(document: "enable_adb")
                 }
             }
-            .markdownTheme(Theme()
-                .thematicBreak {
-                    Divider()
-                        .relativeFrame(height: .em(0.25))
-                        .markdownMargin(top: 16, bottom: 16)
-                })
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding()
+            .padding(.top, 4)
         }
-        .toolbar {
-            Button("Feedback") {
-                NSWorkspace.shared.open(feedbackLink)
-            }
-        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("Connect to Axchange")
     }
 }

@@ -2,6 +2,8 @@
 
 source $(dirname $0)/define.sh
 
+PATCHES_DIR=$(realpath $(dirname $0)/patches)
+
 TARGET_DIR=$1
 if [ -z $TARGET_DIR ]; then
     echo "[-] target directory is not specified"
@@ -19,7 +21,8 @@ for source in $SOURCE_LIST; do
     echo "[+] downloading to $name @ $version"
 
     if [ -d $name ]; then
-        echo "[i] $name already exists, skip cloning"
+        echo "[i] $name already exists, fetching updates"
+        git -C $name fetch --tags
     else
         echo "[+] cloning $name"
         git clone $url $name
@@ -28,13 +31,24 @@ for source in $SOURCE_LIST; do
     pushd $name >/dev/null
     git clean -fdx
     git reset --hard
-    git submodule update --init --recursive --checkout
 
     if [ $version = '*' ]; then
         echo "[i] skip checkout"
     else
         echo "[+] checking out $version"
         git checkout $version
+    fi
+
+    # force keeps the submodules pristine so patches apply cleanly on re-run
+    git submodule update --init --recursive --checkout --force
+
+    # android-tools applies patches/<vendor>/*.patch with git am at configure
+    # time, ours slot in through the same mechanism
+    if [ $name = 'android-tools' ]; then
+        for patch_file in $PATCHES_DIR/adb/*.patch; do
+            echo "[+] staging $(basename $patch_file) into patches/adb"
+            cp $patch_file patches/adb/
+        done
     fi
     popd >/dev/null
 done

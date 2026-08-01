@@ -39,6 +39,8 @@ extension Executor {
         print("[*] adb server starting with port \(port)")
         let result = executeADB(
             withParameters: ["server", "nodaemon", "-L", "tcp:localhost:\(port)"],
+            // patched adb, exits by itself if we die without cleaning up
+            environment: ["ADB_EXIT_WITH_PARENT": "1"],
             timeout: 0,
         ) { pid in
             print("[*] adb server started with pid \(pid)")
@@ -53,6 +55,7 @@ extension Executor {
 
     func executeADB(
         withParameters parameters: [String],
+        environment: [String: String] = [:],
         timeout: Double = -1,
         setPid: ((pid_t) -> Void)? = nil,
         output: ((String) -> Void)? = nil,
@@ -65,7 +68,7 @@ extension Executor {
         let ans = AuxiliaryExecute.spawn(
             command: adbBinaryLocation.path,
             args: parameters,
-            environment: [:],
+            environment: environment,
             timeout: timeout,
             setPid: setPid,
             output: output,

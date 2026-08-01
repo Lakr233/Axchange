@@ -54,5 +54,21 @@ struct MainView: View {
 
             selection = deviceIDs.isEmpty ? .guide : .welcome
         }
+        .toolbar {
+            if #available(macOS 26, *) {
+                ToolbarItem { EmptyView() }
+            } else {
+                ToolbarItem(placement: .navigation) {
+                    Button {
+                        NSApp.keyWindow?.firstResponder?.tryToPerform(
+                            #selector(NSSplitViewController.toggleSidebar(_:)),
+                            with: nil,
+                        )
+                    } label: {
+                        Label("Toggle Sidebar", systemImage: "sidebar.leading")
+                    }
+                }
+            }
+        }
     }
 }

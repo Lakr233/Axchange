@@ -1,0 +1,61 @@
+From f585dfd9061a8734a573f071ab9aacc208aaf8d6 Mon Sep 17 00:00:00 2001
+From: Lakr Aream <2333owo@gmail.com>
+Date: Sat, 1 Aug 2026 18:56:20 +0800
+Subject: [PATCH] adb: exit server when parent process dies
+
+Axchange spawns the server with nodaemon and cleans it up on quit. If the
+app crashes or gets force killed the server lingers and keeps the devices
+attached. Watch the parent pid and shut down once it changes, gated behind
+ADB_EXIT_WITH_PARENT=1 so a manually launched adb is unaffected.
+---
+ client/main.cpp | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/client/main.cpp b/client/main.cpp
+index d8186c36..67583d29 100644
+--- a/client/main.cpp
++++ b/client/main.cpp
+@@ -84,6 +84,29 @@ static void intentionally_leak() {
+ 
+ // one_device: if null, server owns all devices, else server owns only
+ //     device where atransport::MatchesTarget(one_device) is true.
++#if !defined(_WIN32)
++// Exit once the process that spawned us goes away. Axchange starts the server
++// with `nodaemon`, and without this a crashed or force quit client leaves the
++// server behind holding on to the connected devices.
++static void watch_parent_process() {
++    const char* enabled = getenv("ADB_EXIT_WITH_PARENT");
++    if (!enabled || strcmp(enabled, "1") != 0) {
++        return;
++    }
++
++    // reparented to init already means the spawner died before we got here
++    const pid_t parent = getppid();
++
++    std::thread([parent]() {
++        while (parent > 1 && getppid() == parent) {
++            std::this_thread::sleep_for(1s);
++        }
++        LOG(INFO) << "parent process " << parent << " is gone, shutting down";
++        fdevent_run_on_looper([]() { exit(0); });
++    }).detach();
++}
++#endif
++
+ int adb_server_main(int is_daemon, const std::string& socket_spec, const char* one_device,
+                     int ack_reply_fd) {
+ #if defined(_WIN32)
+@@ -110,6 +133,10 @@ int adb_server_main(int is_daemon, const std::string& socket_spec, const char* o
+ #endif
+     signal(SIGINT, [](int) { fdevent_run_on_looper([]() { exit(0); }); });
+ 
++#if !defined(_WIN32)
++    watch_parent_process();
++#endif
++
+     if (one_device) {
+         transport_set_one_device(one_device);
+     }
+-- 
+2.55.0
+

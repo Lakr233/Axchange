@@ -61,6 +61,12 @@ struct AxchangeApp: App {
                 openSoftwareLicense = true
             }
         }
+        CommandGroup(replacing: .help) {
+            Button("Axchange Help") {
+                DocumentationWindowController.show()
+            }
+            .keyboardShortcut("?", modifiers: .command)
+        }
     }
 }
 

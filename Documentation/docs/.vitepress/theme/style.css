@@ -1,0 +1,9 @@
+:root {
+  --brand-color: #20a162;
+
+  --vp-c-brand: var(--brand-color) !important;
+  --vp-c-brand-soft: var(--brand-color) !important;
+  --vp-c-brand-1: var(--brand-color) !important;
+  --vp-c-brand-2: var(--brand-color) !important;
+  --vp-c-brand-3: var(--brand-color) !important;
+}

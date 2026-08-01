@@ -1,0 +1,18 @@
+{
+  "name": "axchange.docs",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Axchange documentation, bundled into the app",
+  "license": "MIT",
+  "scripts": {
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.17"
+  }
+}

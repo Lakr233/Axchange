@@ -39,6 +39,9 @@ echo "[*] building for ${#ARCHS_LIST[@]} archs"
 
 ORIGINAL_PATH=$PATH
 
+# cmake 4 refuses projects declaring < 3.5, protobuf v3.19.4 is one of them
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 for ARCH in $ARCHS_LIST; do
     export PREFIX_DIR="$INSTALL_PREFIX.$ARCH"
     export CFLAGS=""

@@ -89,6 +89,7 @@ artifacts/
 bower_components
 build/
 build/Release
+build_source/
 coverage
 default.profraw
 dist

@@ -7,15 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5002CBC52DD134D9002E7A53 /* CreemKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5002CBC42DD134D9002E7A53 /* CreemKit */; };
-		5002CBC72DD134D9002E7A53 /* CreemProxyKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5002CBC62DD134D9002E7A53 /* CreemProxyKit */; };
-		503466702CFEB50800B41BE4 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5034666F2CFEB50800B41BE4 /* MarkdownUI */; };
 		504711F32890242E005BD174 /* AuxiliaryExecute in Frameworks */ = {isa = PBXBuildFile; productRef = 504711F22890242E005BD174 /* AuxiliaryExecute */; };
 		504D5F992CD0C2EA00734B56 /* AuxiliaryExecute in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F982CD0C2EA00734B56 /* AuxiliaryExecute */; };
 		504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */ = {isa = PBXBuildFile; productRef = 504D5F9B2CD0C30500734B56 /* ColorfulX */; };
-		505A0DB12CFD78F1009E622B /* WindowAnimation in Frameworks */ = {isa = PBXBuildFile; productRef = 505A0DB02CFD78F1009E622B /* WindowAnimation */; };
-		505A0DB42CFD7981009E622B /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 505A0DB32CFD7981009E622B /* ConfettiSwiftUI */; };
-		E7A09E6684368C0F3DEFBD49 /* LookInsideServer in Frameworks */ = {isa = PBXBuildFile; productRef = A1B298ED2166F24839F9D969 /* LookInsideServer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +28,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5088533D2EEF83C100893002 /* Exceptions for "Axchange" folder in "Axchange" target */ = {
+		5088533D2EEF83C100893002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Resources/adb,
 				Resources/EmbedADB.sh,
 			);
 			target = 504711DA289023AE005BD174 /* Axchange */;
@@ -45,29 +40,8 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		508852EE2EEF83C000893002 /* Axchange */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				5088533D2EEF83C100893002 /* Exceptions for "Axchange" folder in "Axchange" target */,
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = Axchange;
-			sourceTree = "<group>";
-		};
-		508853442EEF86EE00893002 /* AxchangeTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = AxchangeTests;
-			sourceTree = "<group>";
-		};
+		508852EE2EEF83C000893002 /* Axchange */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (5088533D2EEF83C100893002 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Axchange; sourceTree = "<group>"; };
+		508853442EEF86EE00893002 /* AxchangeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = AxchangeTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,15 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				505A0DB42CFD7981009E622B /* ConfettiSwiftUI in Frameworks */,
 				504711F32890242E005BD174 /* AuxiliaryExecute in Frameworks */,
 				504D5F992CD0C2EA00734B56 /* AuxiliaryExecute in Frameworks */,
-				5002CBC72DD134D9002E7A53 /* CreemProxyKit in Frameworks */,
-				5002CBC52DD134D9002E7A53 /* CreemKit in Frameworks */,
-				503466702CFEB50800B41BE4 /* MarkdownUI in Frameworks */,
 				504D5F9C2CD0C30500734B56 /* ColorfulX in Frameworks */,
-				505A0DB12CFD78F1009E622B /* WindowAnimation in Frameworks */,
-				E7A09E6684368C0F3DEFBD49 /* LookInsideServer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +102,7 @@
 				504711D8289023AE005BD174 /* Frameworks */,
 				504711D9289023AE005BD174 /* Resources */,
 				504D5FA62CD0C71700734B56 /* Sign ADB */,
+				50D0C1012F2A0001000D0C51 /* Build Documentation */,
 			);
 			buildRules = (
 			);
@@ -147,12 +116,6 @@
 				504711F22890242E005BD174 /* AuxiliaryExecute */,
 				504D5F982CD0C2EA00734B56 /* AuxiliaryExecute */,
 				504D5F9B2CD0C30500734B56 /* ColorfulX */,
-				505A0DB02CFD78F1009E622B /* WindowAnimation */,
-				505A0DB32CFD7981009E622B /* ConfettiSwiftUI */,
-				5034666F2CFEB50800B41BE4 /* MarkdownUI */,
-				5002CBC42DD134D9002E7A53 /* CreemKit */,
-				5002CBC62DD134D9002E7A53 /* CreemProxyKit */,
-				A1B298ED2166F24839F9D969 /* LookInsideServer */,
 			);
 			productName = Axchange;
 			productReference = 504711DB289023AE005BD174 /* Axchange.app */;
@@ -175,6 +138,8 @@
 				508853442EEF86EE00893002 /* AxchangeTests */,
 			);
 			name = AxchangeTests;
+			packageProductDependencies = (
+			);
 			productName = AxchangeTests;
 			productReference = 508853432EEF86EE00893002 /* AxchangeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -187,7 +152,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					504711DA289023AE005BD174 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -212,11 +177,6 @@
 			packageReferences = (
 				504D5F972CD0C2EA00734B56 /* XCRemoteSwiftPackageReference "AuxiliaryExecute" */,
 				504D5F9A2CD0C30500734B56 /* XCRemoteSwiftPackageReference "ColorfulX" */,
-				505A0DAF2CFD78C2009E622B /* XCRemoteSwiftPackageReference "WindowAnimation" */,
-				505A0DB22CFD7954009E622B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
-				5034666E2CFEB4AB00B41BE4 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
-				5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */,
-				1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */,
 			);
 			productRefGroup = 504711DC289023AE005BD174 /* Products */;
 			projectDirPath = "";
@@ -263,7 +223,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$CODE_SIGNING_ALLOWED\" = \"NO\" ]; then\n  echo \"Skipping ADB embedding for unsigned verification build.\"\n  exit 0\nfi\n$PROJECT_DIR/Axchange/Resources/SignADB.sh\n$PROJECT_DIR/Axchange/Resources/EmbedADB.sh\n";
+			shellScript = "$PROJECT_DIR/Axchange/Resources/EmbedADB.sh\n";
+		};
+		50D0C1012F2A0001000D0C51 /* Build Documentation */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Build Documentation";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "\"$PROJECT_DIR/Scripts/BuildDocs\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -426,13 +405,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Axchange/Resources/Entitlements.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 80;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_ENHANCED_SECURITY = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -447,13 +425,13 @@
 				INFOPLIST_FILE = Axchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Axchange;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Lakr Aream. All Rights Reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Lakr Aream. Licensed under the MIT License.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.8.1;
+				MARKETING_VERSION = 1.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.Axchange;
 				PRODUCT_NAME = Axchange;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -467,13 +445,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Axchange/Resources/Entitlements.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 57;
+				CURRENT_PROJECT_VERSION = 80;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_ENHANCED_SECURITY = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -484,21 +461,17 @@
 				ENABLE_RESOURCE_ACCESS_USB = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
-				EXCLUDED_SOURCE_FILE_NAMES = (
-					"$(inherited)",
-					"LookInsideServer*",
-				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Axchange/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Axchange;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Lakr Aream. All Rights Reserved.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Lakr Aream. Licensed under the MIT License.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 1.8.1;
+				MARKETING_VERSION = 1.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = wiki.qaq.Axchange;
 				PRODUCT_NAME = Axchange;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -588,30 +561,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LookInsideApp/LookInside-Release.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.2;
-			};
-		};
-		5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lakr233/CreemKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
-		5034666E2CFEB4AB00B41BE4 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.1;
-			};
-		};
 		504D5F972CD0C2EA00734B56 /* XCRemoteSwiftPackageReference "AuxiliaryExecute" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Lakr233/AuxiliaryExecute";
@@ -628,40 +577,9 @@
 				minimumVersion = 6.0.2;
 			};
 		};
-		505A0DAF2CFD78C2009E622B /* XCRemoteSwiftPackageReference "WindowAnimation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Lakr233/WindowAnimation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.5;
-			};
-		};
-		505A0DB22CFD7954009E622B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5002CBC42DD134D9002E7A53 /* CreemKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */;
-			productName = CreemKit;
-		};
-		5002CBC62DD134D9002E7A53 /* CreemProxyKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5002CBC32DD134D9002E7A53 /* XCRemoteSwiftPackageReference "CreemKit" */;
-			productName = CreemProxyKit;
-		};
-		5034666F2CFEB50800B41BE4 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5034666E2CFEB4AB00B41BE4 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
-			productName = MarkdownUI;
-		};
 		504711F22890242E005BD174 /* AuxiliaryExecute */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AuxiliaryExecute;
@@ -675,21 +593,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 504D5F9A2CD0C30500734B56 /* XCRemoteSwiftPackageReference "ColorfulX" */;
 			productName = ColorfulX;
-		};
-		505A0DB02CFD78F1009E622B /* WindowAnimation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 505A0DAF2CFD78C2009E622B /* XCRemoteSwiftPackageReference "WindowAnimation" */;
-			productName = WindowAnimation;
-		};
-		505A0DB32CFD7981009E622B /* ConfettiSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 505A0DB22CFD7954009E622B /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
-			productName = ConfettiSwiftUI;
-		};
-		A1B298ED2166F24839F9D969 /* LookInsideServer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C5D1097DCC58EA336FD77D1 /* XCRemoteSwiftPackageReference "LookInside-Release" */;
-			productName = LookInsideServer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

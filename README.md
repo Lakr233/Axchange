@@ -33,7 +33,7 @@ Here’s a checklist of features:
 
 ## License
 
-The Axchange is licensed under [MIT License](./LICENSE). It's free if you compile it yourself.
+The Axchange is licensed under [MIT License](./LICENSE).
 
 We reserve the right to change the license in the future.
 
@@ -47,10 +47,6 @@ Made by [@Lakr233](https://twitter.com/Lakr233) for [@lz\_\_\_233](https://twitt
 
 Thanks [@unixzii](https://twitter.com/unixzii) for being with me so many times.
 
-## Sponsor
-
-[LookInside](https://lookinside-app.com/) helps you inspect a running iOS or macOS app UI from your Mac.
-
 ---
 
-Copyright © 2024 Lakr Aream. All Rights Reserved.
+Copyright © 2026 Lakr Aream. Licensed under the MIT License.

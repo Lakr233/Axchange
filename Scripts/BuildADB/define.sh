@@ -9,5 +9,5 @@ export SOURCE_LIST=(
     "https://github.com/protocolbuffers/protobuf@v3.19.4"
     "https://github.com/PCRE2Project/pcre2@pcre2-10.44"
     "https://github.com/google/googletest@v1.15.2"
-    "https://github.com/nmeum/android-tools@35.0.2"
+    "https://github.com/nmeum/android-tools@37.0.0"
 )

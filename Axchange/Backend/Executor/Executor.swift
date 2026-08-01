@@ -46,19 +46,23 @@ public final class Executor: ObservableObject {
         scanForDevices()
     }
 
+    /// Blocks the launch until adb answers, it takes about four seconds to
+    /// accept a socket and finish scanning USB before the app has anything to
+    /// show. The bound is generous, adb is unusable if it never answers.
     func waitForFirstServiceHeartbeat() {
         let sem = DispatchSemaphore(value: 0)
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [self] in
             defer { sem.signal() }
             let beginDate = Date()
-            while Date().timeIntervalSince(beginDate) < 3 {
-                while self.queryServiceVersion() <= 0 {
-                    usleep(250_000) // 0.25s
+            while queryServiceVersion(overPort: adbServerPort) <= 0 {
+                guard Date().timeIntervalSince(beginDate) < 15 else {
+                    print("[!] adb service did not acknowledge in time")
+                    return
                 }
-                let interval = Date().timeIntervalSince(beginDate)
-                print(String(format: "[*] initial wait for adb service acknowledged in %4fs", interval))
-                break
+                usleep(250_000) // 0.25s
             }
+            let interval = Date().timeIntervalSince(beginDate)
+            print(String(format: "[*] initial wait for adb service acknowledged in %4fs", interval))
         }
         sem.wait()
     }

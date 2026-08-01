@@ -62,50 +62,6 @@
         }
       }
     },
-    "Activate" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activate"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティブ化\n"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "激活"
-          }
-        }
-      }
-    },
-    "Activate..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Activate..."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティブ化…"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "激活…"
-          }
-        }
-      }
-    },
     "Application Bundled" : {
       "localizations" : {
         "en" : {
@@ -150,17 +106,6 @@
         }
       }
     },
-    "AXC-XXXX-XXXX-XXXX" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AXC-XXXX-XXXX-XXXX"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "Axchange" : {
       "localizations" : {
         "ja" : {
@@ -171,6 +116,28 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "Axchange Help" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Axchange Help"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Axchange ヘルプ"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Axchange 使用手册"
+          }
+        }
+      }
     },
     "Back" : {
       "localizations" : {
@@ -216,50 +183,6 @@
         }
       }
     },
-    "Click Scan" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click Scan"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スキャンをクリック"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "扫描"
-          }
-        }
-      }
-    },
-    "Communicating with authorization server..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Communicating with authorization server..."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "認証サーバーとの通信中です…"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "与激活服务器联系中…"
-          }
-        }
-      }
-    },
     "Confirm" : {
       "localizations" : {
         "en" : {
@@ -300,50 +223,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "连接到 Axchange"
-          }
-        }
-      }
-    },
-    "Connect your device" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Connect your device"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスを接続してください"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "连接你的设备"
-          }
-        }
-      }
-    },
-    "Continue Trail" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue Trail"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "トレイルを続ける"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "继续试用"
           }
         }
       }
@@ -568,6 +447,28 @@
         }
       }
     },
+    "Documentation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documentation"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ドキュメント"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用手册"
+          }
+        }
+      }
+    },
     "Download" : {
       "localizations" : {
         "en" : {
@@ -612,68 +513,24 @@
         }
       }
     },
-    "Email" : {
+    "Enable ADB on your device, connect it with a cable, then scan." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Email"
+            "value" : "Enable ADB on your device, connect it with a cable, then scan."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "メール"
+            "value" : "デバイスでADBを有効にし、ケーブルで接続してからスキャンしてください。"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "邮箱地址"
-          }
-        }
-      }
-    },
-    "Enable ADB on Device" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable ADB on Device"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスでADBを有効にする"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "在设备上启用 ADB"
-          }
-        }
-      }
-    },
-    "Exit" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exit"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "終了"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "退出"
+            "value" : "请在设备上启用 ADB，通过线缆连接，然后扫描。"
           }
         }
       }
@@ -696,182 +553,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法下载 %@"
-          }
-        }
-      }
-    },
-    "Feedback" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フィードバック"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "反馈"
-          }
-        }
-      }
-    },
-    "Follow the instructions below to connect your device." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Follow the instructions below to connect your device."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスを接続するには、以下の手順に従ってください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请执行下方列出的内容以连接到设备。"
-          }
-        }
-      }
-    },
-    "For a stable user experience, please click the scan button to search for devices." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For a stable user experience, please click the scan button to search for devices."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "安定したユーザーエクスペリエンスを実現するには、スキャンボタンをクリックしてデバイスを検索してください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "为了提供稳定的用户体验，请手动扫描设备。"
-          }
-        }
-      }
-    },
-    "For advanced users, setup a wireless connection on your own." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For advanced users, setup a wireless connection on your own."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "上級者の方は、ご自身でワイヤレス接続を設定してください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "对于希望使用无线连接的专业用户，请自行设置无线连接。"
-          }
-        }
-      }
-    },
-    "For different devices, the way to enable ADB may vary. Please refer to your device manual." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For different devices, the way to enable ADB may vary. Please refer to your device manual."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスによってADBを有効にする方法は異なります。詳しくは、デバイスのマニュアルを参照してください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "对于不同的设备，启用的方式可能有所差异，请参考您的设备说明书。"
-          }
-        }
-      }
-    },
-    "Google's Document" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Google's Document"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Googleのドキュメント"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "谷歌的文档"
-          }
-        }
-      }
-    },
-    "Invalid activation data" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid activation data"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無効なアクティベーションデータ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无效的激活数据"
-          }
-        }
-      }
-    },
-    "Key" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Key"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "キー"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "密钥"
           }
         }
       }
@@ -942,28 +623,6 @@
         }
       }
     },
-    "License expires on:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "License expires on:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ライセンスの有効期限："
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "许可证过期于："
-          }
-        }
-      }
-    },
     "Misc" : {
       "localizations" : {
         "en" : {
@@ -1019,28 +678,6 @@
         }
       }
     },
-    "Never Expire" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Never Expire"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "期限切れなし"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "永不过期"
-          }
-        }
-      }
-    },
     "New Folder" : {
       "localizations" : {
         "en" : {
@@ -1081,6 +718,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无设备"
+          }
+        }
+      }
+    },
+    "No Device Connected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Device Connected"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスが接続されていません"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未连接设备"
           }
         }
       }
@@ -1217,72 +876,6 @@
         }
       }
     },
-    "Please also authorize the connection on your device." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please also authorize the connection on your device."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスでも接続を許可してください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请同时在设备上信任此计算机。"
-          }
-        }
-      }
-    },
-    "Please connect your device via a cable." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please connect your device via a cable."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスをケーブルで接続してください。\n"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请通过线缆连接设备。"
-          }
-        }
-      }
-    },
-    "Please refer to" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please refer to"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ご参照ください"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请查看"
-          }
-        }
-      }
-    },
     "Preparing Download" : {
       "localizations" : {
         "en" : {
@@ -1327,22 +920,6 @@
         }
       }
     },
-    "Purchase" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "購入"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "购买"
-          }
-        }
-      }
-    },
     "Refresh" : {
       "localizations" : {
         "en" : {
@@ -1383,28 +960,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重启服务"
-          }
-        }
-      }
-    },
-    "Revoke Activation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Revoke Activation"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティベーションの取り消し"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "反激活"
           }
         }
       }
@@ -1497,28 +1052,6 @@
         }
       }
     },
-    "Show Activation Info..." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show Activation Info..."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティベーション情報を表示…"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "显示激活信息…"
-          }
-        }
-      }
-    },
     "Size" : {
       "localizations" : {
         "en" : {
@@ -1585,74 +1118,7 @@
         }
       }
     },
-    "The Axchange installed on this computer is licensed to:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Axchange installed on this computer is licensed to:"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このコンピュータにインストールされているAxchangeは、次のライセンスで提供されています："
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此计算机上安装的 Axchange 授权给："
-          }
-        }
-      }
-    },
-    "This is a trial version of Axchange. Please activate the app to use all features after trail." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This is a trial version of Axchange. Please activate the app to use all features after trail."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "これはAxchangeの体験版です。試用期間後にすべての機能を使用するには、アプリをアクティブにしてください。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此计算机上安装的 Axchange 为试用版。请激活此软件以便在试用结束后继续使用全部功能。"
-          }
-        }
-      }
-    },
-    "to enable ADB on your device." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "to enable ADB on your device."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "デバイスでADBを有効にするには。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "来在设备上启用 ADB。"
-          }
-        }
-      }
-    },
     "Toggle Sidebar" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1692,50 +1158,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "类型"
-          }
-        }
-      }
-    },
-    "Unable to fetch activation data" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to fetch activation data"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アクティベーションデータの取得に失敗しました"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法获取激活数据"
-          }
-        }
-      }
-    },
-    "Unknown error" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown error"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不明なエラー"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未知错误"
           }
         }
       }
@@ -1868,39 +1290,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "欢迎使用 Axchange"
-          }
-        }
-      }
-    },
-    "xxxx@xxx.xxx" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "xxxx@xxx.xxx\n"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "You can't undo this action." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can't undo this action."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この操作は元に戻せません"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你无法撤销这个操作。"
           }
         }
       }

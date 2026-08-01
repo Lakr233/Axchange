@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+
+cd "$(dirname "$0")/../Documentation"
+
+destination="$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/Documentation.bundle"
+
+if [[ "$CONFIGURATION" != "Release" && -d "$destination" ]]; then
+    echo "[+] documentation already embedded, skipping"
+    exit 0
+fi
+
+echo "installing documentation dependencies..."
+npm ci --no-audit --no-fund --silent
+
+echo "building documentation..."
+npx --no-install vitepress build docs
+
+echo "embedding documentation..."
+rm -rf "$destination"
+mkdir -p "$destination"
+rsync -a --delete docs/.vitepress/dist/ "$destination/"
+
+echo "[+] completed successfully"
