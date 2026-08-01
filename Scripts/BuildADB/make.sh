@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+set -e
+set -o pipefail
+
 cd $(dirname $0)
 
 SOURCE_DIR="$(pwd)/build_source"

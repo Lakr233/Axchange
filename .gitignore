@@ -118,3 +118,6 @@ xcuserdata/
 yarn-debug.log*
 yarn-error.log*
 
+
+# adb binary, built by Scripts/BuildADB/make.sh
+Axchange/Resources/adb

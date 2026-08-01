@@ -24,7 +24,7 @@ cmake .. \
     -DCMAKE_C_COMPILER="$CC" \
     -DCMAKE_CXX_COMPILER="$CXX"
 
-make -j$(nproc)
+make -j$(sysctl -n hw.ncpu)
 make install
 
 popd

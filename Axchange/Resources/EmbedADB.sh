@@ -8,6 +8,12 @@ echo "    EXPANDED_CODE_SIGN_IDENTITY_NAME: $EXPANDED_CODE_SIGN_IDENTITY_NAME"
 echo "    CODESIGNING_FOLDER_PATH: $CODESIGNING_FOLDER_PATH"
 
 cd "$(dirname "$0")"
+
+if [ ! -f ./adb ]; then
+    echo "[*] adb not found, building from source..."
+    ../../Scripts/BuildADB/make.sh
+fi
+
 ENTITLEMENT_PATH="$(pwd)/Entitlements-Subprocess.entitlements"
 
 echo "[*] using entitlements: $ENTITLEMENT_PATH"
